@@ -33,9 +33,13 @@
 
 <!-- GA4: вставити тег тут -->
 <!-- Meta Pixel: вставити тут -->
+<link rel="preconnect" href="https://res.cloudinary.com">
+<link rel="preload" as="image" imagesrcset="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_480/v1791446152/3_pxuujr.jpg 480w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_800/v1791446152/3_pxuujr.jpg 800w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1200/v1791446152/3_pxuujr.jpg 1200w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1600/v1791446152/3_pxuujr.jpg 1600w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_2000/v1791446152/3_pxuujr.jpg 2000w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_2400/v1791446152/3_pxuujr.jpg 2400w" imagesizes="(max-width:760px) 680px, calc(100vw - 160px)" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Onest:wght@400;500;600;700&display=swap&subset=cyrillic" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Onest:wght@400;500;600;700&display=swap&subset=cyrillic">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Onest:wght@400;500;600;700&display=swap&subset=cyrillic" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Onest:wght@400;500;600;700&display=swap&subset=cyrillic"></noscript>
 <style>
 :root{
   --white:#FFFFFF; --paper:#F5F6F9; --fog:#E7EAF1; --ink:#151A24; --blue:#1D4FE8;
@@ -229,8 +233,8 @@ p{margin:0}
 .ba-nav{display:flex;align-items:center;gap:12px}
 .ba-count{font:500 14px var(--display);color:var(--ink-soft);min-width:56px}
 .ba-count b{color:var(--ink);font-weight:600}
-.ba-dots{display:flex;gap:6px;margin-right:4px}
-.ba-dots button{width:8px;height:8px;padding:0;border:0;border-radius:999px;background:var(--fog);cursor:pointer;transition:width .3s,background .3s}
+.ba-dots{display:flex;gap:0;margin-right:0}
+.ba-dots button{box-sizing:content-box;width:8px;height:8px;padding:10px 4px;border:0;border-radius:999px;background:var(--fog);background-clip:content-box;cursor:pointer;transition:width .3s,background .3s}
 .ba-dots button[aria-current="true"]{width:24px;background:var(--blue)}
 .ba-btn{display:grid;place-items:center;width:52px;height:52px;padding:0;border-radius:50%;border:1.5px solid var(--blue);background:transparent;color:var(--blue);cursor:pointer;transition:background .2s,color .2s}
 .ba-btn:hover{background:var(--blue);color:#fff}
@@ -336,7 +340,7 @@ dialog.thx::-webkit-scrollbar{display:none}
 .fsoc svg{width:20px;height:20px;fill:currentColor}
 .fcol{grid-column:span 2;display:grid;gap:10px;align-content:start;font-size:15px}
 .fcol:first-of-type{grid-column:7/9}
-.fcol h4{margin:0 0 4px;font:600 11px/1 var(--text);letter-spacing:.08em;text-transform:uppercase;color:rgba(245,246,249,.5)}
+.fcol h4{margin:0 0 4px;font:600 11px/1 var(--text);letter-spacing:.08em;text-transform:uppercase;color:rgba(245,246,249,.68)}
 .fcol a{color:var(--paper);transition:color .2s}.fcol a:hover{color:#9DB5FF}
 .fcol span{color:rgba(245,246,249,.6)}
 .fbottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 24px;padding:20px 4px 0;font-size:13px;color:var(--ink-soft)}
@@ -376,7 +380,15 @@ dialog.pol[open]{display:flex;flex-direction:column;max-height:min(88dvh,920px)}
 .pol-sec .contact div{padding:14px 16px;border-radius:16px;background:var(--white);font-size:15px}
 .pol-sec .contact small{display:block;margin-bottom:4px;font:600 11px/1 var(--text);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
 .pol-sec .contact a{font-weight:600}
-@media (max-width:760px){.pol-sec .contact{grid-template-columns:1fr}}
+@media (max-width:760px){
+  .pol-sec .contact{grid-template-columns:1fr}
+  /* centred card with side margins, same as the thank-you popup */
+  dialog.dlg.pol{width:calc(100% - 32px);max-width:100%;margin:auto;border-radius:24px}
+  dialog.dlg.pol[open]{max-height:calc(100dvh - 32px)}
+  .pol-head{padding:20px 16px 14px}.pol-head>div{min-width:0}
+  .pol .pol-head h2{font-size:clamp(1.4rem,7vw,1.75rem);overflow-wrap:anywhere}
+  .pol-body{padding:14px 12px 16px}
+}
 /* mobile bar */
 .mbar{display:none}
 
@@ -465,7 +477,7 @@ dialog.pol[open]{display:flex;flex-direction:column;max-height:min(88dvh,920px)}
 <section class="hero">
   <div class="wrap">
     <div class="hero-fold">
-      <img width="2400" height="1340" class="hero-bg" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_2400/v1791446152/3_pxuujr.jpg" fetchpriority="high" decoding="async" alt="Клінерка CleanSpot миє підлогу пароочисником Kärcher у світлій кухні" onerror="this.style.visibility='hidden'">
+      <img width="2400" height="1340" class="hero-bg" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1200/v1791446152/3_pxuujr.jpg" srcset="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_480/v1791446152/3_pxuujr.jpg 480w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_800/v1791446152/3_pxuujr.jpg 800w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1200/v1791446152/3_pxuujr.jpg 1200w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1600/v1791446152/3_pxuujr.jpg 1600w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_2000/v1791446152/3_pxuujr.jpg 2000w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_2400/v1791446152/3_pxuujr.jpg 2400w" sizes="(max-width:760px) 680px, calc(100vw - 160px)" fetchpriority="high" decoding="async" alt="Клінерка CleanSpot миє підлогу пароочисником Kärcher у світлій кухні" onerror="this.style.visibility='hidden'">
     <div class="hero-top">
       <div class="hero-head">
         <h1><span>Ідеальна чистота</span> <span>вашого дому у&nbsp;Дніпрі</span> <em class="blue">без зайвих турбот</em></h1>
@@ -501,19 +513,19 @@ dialog.pol[open]{display:flex;flex-direction:column;max-height:min(88dvh,920px)}
         <p>Ціна вказана за м² або за предмет. Остаточну суму називаємо до початку робіт, і вона не змінюється.</p>
       </div>
       <!-- TODO: ціни тимчасові, крім 45 грн/м² і 1 200 грн -->
-      <article class="svc-card c-chem"><img width="1600" height="893" loading="lazy" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1600/v1791447824/6_ttgzoz.jpg" alt="Клінер CleanSpot чистить диван мийним пилососом Kärcher" style="object-position:45% 35%" onerror="this.style.visibility='hidden'">
+      <article class="svc-card c-chem"><img width="1600" height="893" loading="lazy" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1200/v1791447824/6_ttgzoz.jpg" srcset="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_480/v1791447824/6_ttgzoz.jpg 480w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_800/v1791447824/6_ttgzoz.jpg 800w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1200/v1791447824/6_ttgzoz.jpg 1200w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1600/v1791447824/6_ttgzoz.jpg 1600w" sizes="(max-width:1000px) calc(100vw - 32px), 50vw" alt="Клінер CleanSpot чистить диван мийним пилососом Kärcher" style="object-position:45% 35%" onerror="this.style.visibility='hidden'">
         <div class="svc-info"><h3>Хімчистка меблів і килимів</h3><p>Дивани, крісла, матраци, килими. Прибираємо плями та запахи, не пошкоджуючи тканину.</p><span class="price"><small>від</small>1 200 грн</span></div>
         <button class="go" data-service="chem" aria-label="Замовити: Хімчистка меблів і килимів"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></button></article>
-      <article class="svc-card c-gen"><img width="1200" height="670" loading="lazy" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1200/v1791448360/8_kju8sz.jpg" alt="Бригада CleanSpot робить генеральне прибирання кухні-вітальні" style="object-position:38% 50%" onerror="this.style.visibility='hidden'">
+      <article class="svc-card c-gen"><img width="1200" height="670" loading="lazy" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1200/v1791448360/8_kju8sz.jpg" srcset="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_480/v1791448360/8_kju8sz.jpg 480w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_800/v1791448360/8_kju8sz.jpg 800w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1200/v1791448360/8_kju8sz.jpg 1200w" sizes="(max-width:760px) calc(100vw - 32px), (max-width:1000px) 50vw, 25vw" alt="Бригада CleanSpot робить генеральне прибирання кухні-вітальні" style="object-position:38% 50%" onerror="this.style.visibility='hidden'">
         <div class="svc-info"><h3>Генеральне прибирання</h3><p>Глибока чистка кожної зони: від стелі до плінтусів, кухня, санвузли, вікна зсередини.</p><span class="price"><small>від</small>45 грн/м²</span></div>
         <button class="go" data-service="general" aria-label="Замовити: Генеральне прибирання"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></button></article>
-      <article class="svc-card c-rep"><img width="1200" height="670" loading="lazy" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1200/v1791448360/7_ofwhjb.jpg" alt="Бригада CleanSpot прибирає квартиру після ремонту: пилосос, швабра, миття вікон" style="object-position:20% 45%" onerror="this.style.visibility='hidden'">
+      <article class="svc-card c-rep"><img width="1200" height="670" loading="lazy" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1200/v1791448360/7_ofwhjb.jpg" srcset="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_480/v1791448360/7_ofwhjb.jpg 480w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_800/v1791448360/7_ofwhjb.jpg 800w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1200/v1791448360/7_ofwhjb.jpg 1200w" sizes="(max-width:760px) calc(100vw - 32px), (max-width:1000px) 50vw, 25vw" alt="Бригада CleanSpot прибирає квартиру після ремонту: пилосос, швабра, миття вікон" style="object-position:20% 45%" onerror="this.style.visibility='hidden'">
         <div class="svc-info"><h3>Прибирання після ремонту</h3><p>Видаляємо будівельний пил, клей і фарбу. Квартира готова до заселення.</p><span class="price"><small>від</small>60 грн/м²</span></div>
         <button class="go" data-service="repair" aria-label="Замовити: Прибирання після ремонту"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></button></article>
-      <article class="svc-card c-sup"><img width="1200" height="670" loading="lazy" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1200/v1791448596/9_mocch9.jpg" alt="Клінерка витирає пил із полиць у світлій вітальні" style="object-position:66% 40%" onerror="this.style.visibility='hidden'">
+      <article class="svc-card c-sup"><img width="1200" height="670" loading="lazy" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1200/v1791448596/9_mocch9.jpg" srcset="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_480/v1791448596/9_mocch9.jpg 480w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_800/v1791448596/9_mocch9.jpg 800w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1200/v1791448596/9_mocch9.jpg 1200w" sizes="(max-width:760px) calc(100vw - 32px), (max-width:1000px) 50vw, 25vw" alt="Клінерка витирає пил із полиць у світлій вітальні" style="object-position:66% 40%" onerror="this.style.visibility='hidden'">
         <div class="svc-info"><h3>Підтримуюче прибирання</h3><p>Регулярна чистота без зайвого навантаження: пил, підлога, санвузли, кухня.</p><span class="price"><small>від</small>30 грн/м²</span></div>
         <button class="go" data-service="support" aria-label="Замовити: Підтримуюче прибирання"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></button></article>
-      <article class="svc-card c-win"><img width="1600" height="893" loading="lazy" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1600/v1791447824/5_kt2cqt.jpg" alt="Клінерка CleanSpot миє вікно віконним пилососом Kärcher" style="object-position:38% 30%" onerror="this.style.visibility='hidden'">
+      <article class="svc-card c-win"><img width="1600" height="893" loading="lazy" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1200/v1791447824/5_kt2cqt.jpg" srcset="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_480/v1791447824/5_kt2cqt.jpg 480w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_800/v1791447824/5_kt2cqt.jpg 800w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1200/v1791447824/5_kt2cqt.jpg 1200w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1600/v1791447824/5_kt2cqt.jpg 1600w" sizes="(max-width:760px) calc(100vw - 32px), (max-width:1000px) 100vw, 25vw" alt="Клінерка CleanSpot миє вікно віконним пилососом Kärcher" style="object-position:38% 30%" onerror="this.style.visibility='hidden'">
         <div class="svc-info"><h3>Миття вікон і балконів</h3><p>Вікна, балкони й вітражі зсередини та ззовні, без розводів.</p><span class="price"><small>від</small>80 грн/м²</span></div>
         <button class="go" data-service="windows" aria-label="Замовити: Миття вікон і балконів"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></button></article>
     </div>
@@ -537,7 +549,7 @@ dialog.pol[open]{display:flex;flex-direction:column;max-height:min(88dvh,920px)}
 <!-- 4. ABOUT -->
 <section class="section" id="about">
   <div class="wrap about">
-    <figure class="ph" style="margin:0"><img width="1200" height="1340" loading="lazy" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/c_crop,g_north_west,x_0,y_0,w_1376,h_1536/f_auto,q_auto,w_1200/v1791447470/4_vbdxwt.jpg" alt="Клінер CleanSpot пилососить вітальню професійним пилососом Kärcher" onerror="this.style.visibility='hidden'"></figure>
+    <figure class="ph" style="margin:0"><img width="1200" height="1340" loading="lazy" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/c_crop,g_north_west,x_0,y_0,w_1376,h_1536/f_auto,q_auto,w_1200/v1791447470/4_vbdxwt.jpg" srcset="https://res.cloudinary.com/ds3rmkd9q/image/upload/c_crop,g_north_west,x_0,y_0,w_1376,h_1536/f_auto,q_auto,w_480/v1791447470/4_vbdxwt.jpg 480w, https://res.cloudinary.com/ds3rmkd9q/image/upload/c_crop,g_north_west,x_0,y_0,w_1376,h_1536/f_auto,q_auto,w_800/v1791447470/4_vbdxwt.jpg 800w, https://res.cloudinary.com/ds3rmkd9q/image/upload/c_crop,g_north_west,x_0,y_0,w_1376,h_1536/f_auto,q_auto,w_1200/v1791447470/4_vbdxwt.jpg 1200w" sizes="(max-width:1000px) calc(100vw - 32px), 45vw" alt="Клінер CleanSpot пилососить вітальню професійним пилососом Kärcher" onerror="this.style.visibility='hidden'"></figure>
     <div class="about-copy">
       <span class="pill">Про нас</span>
       <h2>Прибираємо так, ніби це наш <span class="blue">власний дім</span></h2>
@@ -559,7 +571,7 @@ dialog.pol[open]{display:flex;flex-direction:column;max-height:min(88dvh,920px)}
   <div class="wrap">
     <div class="sec-head"><div class="sec-title"><span class="pill">Процес</span><h2>Як ми <span class="blue">працюємо</span></h2></div><p>Ціну фіксуємо заздалегідь, а платите ви лише за прийнятий результат.</p></div>
     <div class="process">
-      <img width="2400" height="1340" loading="lazy" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_2400/v1791446152/2_f5prcz.jpg" alt="Двоє клінерів CleanSpot миють панорамні вікна у світлій квартирі" onerror="this.style.visibility='hidden'">
+      <img width="2400" height="1340" loading="lazy" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1200/v1791446152/2_f5prcz.jpg" srcset="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_480/v1791446152/2_f5prcz.jpg 480w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_800/v1791446152/2_f5prcz.jpg 800w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1200/v1791446152/2_f5prcz.jpg 1200w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1600/v1791446152/2_f5prcz.jpg 1600w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_2000/v1791446152/2_f5prcz.jpg 2000w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_2400/v1791446152/2_f5prcz.jpg 2400w" sizes="(max-width:1000px) calc(100vw - 32px), calc(100vw - 160px)" alt="Двоє клінерів CleanSpot миють панорамні вікна у світлій квартирі" onerror="this.style.visibility='hidden'">
     <div class="steps">
       <div class="step"><span class="n">01</span><h3>Заявка</h3><p>Залишаєте заявку на сайті або телефонуєте нам.</p></div>
       <div class="step"><span class="n">02</span><h3>Уточнення</h3><p>Узгоджуємо обсяг робіт і час та фіксуємо вартість.</p></div>
@@ -579,24 +591,24 @@ dialog.pol[open]{display:flex;flex-direction:column;max-height:min(88dvh,920px)}
       <div class="ba-view"><div class="ba-track">
         <figure class="ba-slide" data-title="Хімчистка дивана">
           <div class="ba">
-            <img loading="lazy" width="2000" height="1116" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_2000/v1791446928/4_%D0%B4%D0%B8%D0%B2%D0%B0%D0%BD_%D0%BF%D0%BE%D1%81%D0%BB%D0%B5_yagq5s.jpg" alt="Диван після хімчистки: чиста світла тканина без плям" onerror="this.style.visibility='hidden'">
-            <img width="2000" height="1116" class="before" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_2000/v1791446928/4_%D0%B4%D0%B8%D0%B2%D0%B0%D0%BD_%D0%B4%D0%BE_o3fjam.jpg" alt="Диван до хімчистки: плями й забруднення на подушках" loading="lazy" onerror="this.style.visibility='hidden'">
+            <img loading="lazy" width="2000" height="1116" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1200/v1791446928/4_%D0%B4%D0%B8%D0%B2%D0%B0%D0%BD_%D0%BF%D0%BE%D1%81%D0%BB%D0%B5_yagq5s.jpg" srcset="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_480/v1791446928/4_%D0%B4%D0%B8%D0%B2%D0%B0%D0%BD_%D0%BF%D0%BE%D1%81%D0%BB%D0%B5_yagq5s.jpg 480w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_800/v1791446928/4_%D0%B4%D0%B8%D0%B2%D0%B0%D0%BD_%D0%BF%D0%BE%D1%81%D0%BB%D0%B5_yagq5s.jpg 800w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1200/v1791446928/4_%D0%B4%D0%B8%D0%B2%D0%B0%D0%BD_%D0%BF%D0%BE%D1%81%D0%BB%D0%B5_yagq5s.jpg 1200w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1600/v1791446928/4_%D0%B4%D0%B8%D0%B2%D0%B0%D0%BD_%D0%BF%D0%BE%D1%81%D0%BB%D0%B5_yagq5s.jpg 1600w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_2000/v1791446928/4_%D0%B4%D0%B8%D0%B2%D0%B0%D0%BD_%D0%BF%D0%BE%D1%81%D0%BB%D0%B5_yagq5s.jpg 2000w" sizes="(max-width:1000px) calc(100vw - 32px), calc(100vw - 160px)" alt="Диван після хімчистки: чиста світла тканина без плям" onerror="this.style.visibility='hidden'">
+            <img width="2000" height="1116" class="before" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1200/v1791446928/4_%D0%B4%D0%B8%D0%B2%D0%B0%D0%BD_%D0%B4%D0%BE_o3fjam.jpg" srcset="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_480/v1791446928/4_%D0%B4%D0%B8%D0%B2%D0%B0%D0%BD_%D0%B4%D0%BE_o3fjam.jpg 480w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_800/v1791446928/4_%D0%B4%D0%B8%D0%B2%D0%B0%D0%BD_%D0%B4%D0%BE_o3fjam.jpg 800w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1200/v1791446928/4_%D0%B4%D0%B8%D0%B2%D0%B0%D0%BD_%D0%B4%D0%BE_o3fjam.jpg 1200w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1600/v1791446928/4_%D0%B4%D0%B8%D0%B2%D0%B0%D0%BD_%D0%B4%D0%BE_o3fjam.jpg 1600w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_2000/v1791446928/4_%D0%B4%D0%B8%D0%B2%D0%B0%D0%BD_%D0%B4%D0%BE_o3fjam.jpg 2000w" sizes="(max-width:1000px) calc(100vw - 32px), calc(100vw - 160px)" alt="Диван до хімчистки: плями й забруднення на подушках" loading="lazy" onerror="this.style.visibility='hidden'">
             <span class="tag l">До</span><span class="tag r">Після</span>
             <div class="line"></div><div class="knob" aria-hidden="true">↔</div>
             <input type="range" min="0" max="100" value="50" aria-label="Порівняння до і після: Хімчистка дивана">
           </div>
         </figure>        <figure class="ba-slide" data-title="Генеральне прибирання кухні">
           <div class="ba">
-            <img loading="lazy" width="2000" height="1116" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_2000/v1791446930/5_%D0%BA%D1%83%D1%85%D0%BD%D1%8F_%D0%BF%D0%BE%D1%81%D0%BB%D0%B5_siwljg.jpg" alt="Кухня після прибирання: чисті поверхні й підлога" onerror="this.style.visibility='hidden'">
-            <img width="2000" height="1116" class="before" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_2000/v1791446931/5_%D0%BA%D1%83%D1%85%D0%BD%D1%8F_%D0%B4%D0%BE_bsffex.jpg" alt="Кухня до прибирання: брудний посуд, крихти й плями на підлозі" loading="lazy" onerror="this.style.visibility='hidden'">
+            <img loading="lazy" width="2000" height="1116" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1200/v1791446930/5_%D0%BA%D1%83%D1%85%D0%BD%D1%8F_%D0%BF%D0%BE%D1%81%D0%BB%D0%B5_siwljg.jpg" srcset="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_480/v1791446930/5_%D0%BA%D1%83%D1%85%D0%BD%D1%8F_%D0%BF%D0%BE%D1%81%D0%BB%D0%B5_siwljg.jpg 480w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_800/v1791446930/5_%D0%BA%D1%83%D1%85%D0%BD%D1%8F_%D0%BF%D0%BE%D1%81%D0%BB%D0%B5_siwljg.jpg 800w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1200/v1791446930/5_%D0%BA%D1%83%D1%85%D0%BD%D1%8F_%D0%BF%D0%BE%D1%81%D0%BB%D0%B5_siwljg.jpg 1200w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1600/v1791446930/5_%D0%BA%D1%83%D1%85%D0%BD%D1%8F_%D0%BF%D0%BE%D1%81%D0%BB%D0%B5_siwljg.jpg 1600w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_2000/v1791446930/5_%D0%BA%D1%83%D1%85%D0%BD%D1%8F_%D0%BF%D0%BE%D1%81%D0%BB%D0%B5_siwljg.jpg 2000w" sizes="(max-width:1000px) calc(100vw - 32px), calc(100vw - 160px)" alt="Кухня після прибирання: чисті поверхні й підлога" onerror="this.style.visibility='hidden'">
+            <img width="2000" height="1116" class="before" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1200/v1791446931/5_%D0%BA%D1%83%D1%85%D0%BD%D1%8F_%D0%B4%D0%BE_bsffex.jpg" srcset="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_480/v1791446931/5_%D0%BA%D1%83%D1%85%D0%BD%D1%8F_%D0%B4%D0%BE_bsffex.jpg 480w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_800/v1791446931/5_%D0%BA%D1%83%D1%85%D0%BD%D1%8F_%D0%B4%D0%BE_bsffex.jpg 800w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1200/v1791446931/5_%D0%BA%D1%83%D1%85%D0%BD%D1%8F_%D0%B4%D0%BE_bsffex.jpg 1200w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1600/v1791446931/5_%D0%BA%D1%83%D1%85%D0%BD%D1%8F_%D0%B4%D0%BE_bsffex.jpg 1600w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_2000/v1791446931/5_%D0%BA%D1%83%D1%85%D0%BD%D1%8F_%D0%B4%D0%BE_bsffex.jpg 2000w" sizes="(max-width:1000px) calc(100vw - 32px), calc(100vw - 160px)" alt="Кухня до прибирання: брудний посуд, крихти й плями на підлозі" loading="lazy" onerror="this.style.visibility='hidden'">
             <span class="tag l">До</span><span class="tag r">Після</span>
             <div class="line"></div><div class="knob" aria-hidden="true">↔</div>
             <input type="range" min="0" max="100" value="50" aria-label="Порівняння до і після: Генеральне прибирання кухні">
           </div>
         </figure>        <figure class="ba-slide" data-title="Прибирання після ремонту">
           <div class="ba">
-            <img width="2000" height="1116" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_2000/v1791449074/11_jh70zk.jpg" alt="Кухня-вітальня після прибирання: чиста підлога, острови й обідня зона" loading="lazy" onerror="this.style.visibility='hidden'">
-            <img width="2000" height="1116" class="before" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_2000/v1791449074/10_r8rlnd.jpg" alt="Кухня-вітальня після ремонту: плівка, картон, будівельне сміття" loading="lazy" onerror="this.style.visibility='hidden'">
+            <img width="2000" height="1116" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1200/v1791449074/11_jh70zk.jpg" srcset="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_480/v1791449074/11_jh70zk.jpg 480w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_800/v1791449074/11_jh70zk.jpg 800w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1200/v1791449074/11_jh70zk.jpg 1200w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1600/v1791449074/11_jh70zk.jpg 1600w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_2000/v1791449074/11_jh70zk.jpg 2000w" sizes="(max-width:1000px) calc(100vw - 32px), calc(100vw - 160px)" alt="Кухня-вітальня після прибирання: чиста підлога, острови й обідня зона" loading="lazy" onerror="this.style.visibility='hidden'">
+            <img width="2000" height="1116" class="before" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1200/v1791449074/10_r8rlnd.jpg" srcset="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_480/v1791449074/10_r8rlnd.jpg 480w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_800/v1791449074/10_r8rlnd.jpg 800w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1200/v1791449074/10_r8rlnd.jpg 1200w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1600/v1791449074/10_r8rlnd.jpg 1600w, https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_2000/v1791449074/10_r8rlnd.jpg 2000w" sizes="(max-width:1000px) calc(100vw - 32px), calc(100vw - 160px)" alt="Кухня-вітальня після ремонту: плівка, картон, будівельне сміття" loading="lazy" onerror="this.style.visibility='hidden'">
             <span class="tag l">До</span><span class="tag r">Після</span>
             <div class="line"></div><div class="knob" aria-hidden="true">↔</div>
             <input type="range" min="0" max="100" value="50" aria-label="Порівняння до і після: Прибирання після ремонту">
@@ -662,7 +674,7 @@ dialog.pol[open]{display:flex;flex-direction:column;max-height:min(88dvh,920px)}
       </div>
 
     </div>
-    <figure class="ph" style="margin:0"><img width="1200" height="1340" loading="lazy" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/c_crop,g_north_west,x_1376,y_0,w_1376,h_1536/f_auto,q_auto,w_1200/v1791447470/4_vbdxwt.jpg" alt="Клінерка CleanSpot миє панорамне вікно віконним пилососом Kärcher" onerror="this.style.visibility='hidden'">
+    <figure class="ph" style="margin:0"><img width="1200" height="1340" loading="lazy" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/c_crop,g_north_west,x_1376,y_0,w_1376,h_1536/f_auto,q_auto,w_1200/v1791447470/4_vbdxwt.jpg" srcset="https://res.cloudinary.com/ds3rmkd9q/image/upload/c_crop,g_north_west,x_1376,y_0,w_1376,h_1536/f_auto,q_auto,w_480/v1791447470/4_vbdxwt.jpg 480w, https://res.cloudinary.com/ds3rmkd9q/image/upload/c_crop,g_north_west,x_1376,y_0,w_1376,h_1536/f_auto,q_auto,w_800/v1791447470/4_vbdxwt.jpg 800w, https://res.cloudinary.com/ds3rmkd9q/image/upload/c_crop,g_north_west,x_1376,y_0,w_1376,h_1536/f_auto,q_auto,w_1200/v1791447470/4_vbdxwt.jpg 1200w" sizes="(max-width:1000px) calc(100vw - 32px), 45vw" alt="Клінерка CleanSpot миє панорамне вікно віконним пилососом Kärcher" onerror="this.style.visibility='hidden'">
       <div class="badge"><b>30 хв</b><span>середній час до нашого дзвінка. Працюємо щодня з 8:00 до 20:00.</span></div></figure>
   </div>
 </section>
