@@ -1,0 +1,1011 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CleanSpot — прибирання у Дніпрі з фіксованою ціною</title>
+<meta name="description" content="Прибирання у Дніпрі: генеральне, після ремонту, хімчистка меблів, миття вікон. Фіксована ціна до початку робіт і переробка за 24 години.">
+<meta name="theme-color" content="#1D4FE8">
+<!-- TODO: замінити https://cleanspot.com.ua/ на реальний домен після деплою (canonical + og:url) -->
+<link rel="canonical" href="https://cleanspot.com.ua/">
+
+<!-- Open Graph: превʼю посилання в Telegram, Facebook, Instagram, Viber -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="uk_UA">
+<meta property="og:site_name" content="CleanSpot">
+<meta property="og:title" content="CleanSpot — прибирання у Дніпрі з фіксованою ціною">
+<meta property="og:description" content="Прибирання у Дніпрі: генеральне, після ремонту, хімчистка меблів, миття вікон. Фіксована ціна до початку робіт і переробка за 24 години.">
+<meta property="og:url" content="https://cleanspot.com.ua/">
+<!-- TODO: og:image — бажано зробити окремий банер 1200×630 px з логотипом і заголовком (JPG до 1 МБ). Зараз це фото першого екрана, яке Cloudinary обрізає під 1200×630 -->
+<meta property="og:image" content="https://res.cloudinary.com/ds3rmkd9q/image/upload/c_fill,g_east,w_1200,h_630/f_jpg,q_80/v1791446152/3_pxuujr.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Клінерка CleanSpot миє підлогу пароочисником Kärcher у світлій кухні">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CleanSpot — прибирання у Дніпрі з фіксованою ціною">
+<meta name="twitter:description" content="Прибирання у Дніпрі: генеральне, після ремонту, хімчистка меблів, миття вікон. Фіксована ціна до початку робіт і переробка за 24 години.">
+<meta name="twitter:image" content="https://res.cloudinary.com/ds3rmkd9q/image/upload/c_fill,g_east,w_1200,h_630/f_jpg,q_80/v1791446152/3_pxuujr.jpg">
+
+<!-- Фавіконки: файли лежать у корені проєкту поруч з index.html -->
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<!-- GA4: вставити тег тут -->
+<!-- Meta Pixel: вставити тут -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Onest:wght@400;500;600;700&display=swap&subset=cyrillic" rel="stylesheet">
+<style>
+:root{
+  --white:#FFFFFF; --paper:#F5F6F9; --fog:#E7EAF1; --ink:#151A24; --blue:#1D4FE8;
+  --blue-dark:#1740BD; --blue-soft:#E8EEFD; --ink-soft:#5B6573; --ok:#1FA971; --err:#D64545;
+  --r:20px; --r-s:12px; --pad:clamp(16px,4vw,48px);
+  --display:"Onest",system-ui,sans-serif; --text:"Inter",system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;font:400 16px/1.5 var(--text);color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1760px;margin:0 auto;padding-inline:var(--pad)}
+@media (min-width:1001px){:root{--pad:80px}}
+.section{padding-block:clamp(64px,10vw,128px)}
+h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-.03em;line-height:.98;margin:0}
+h2{font-size:clamp(2rem,4.6vw,3.75rem)}
+h3{font-size:1.35rem;letter-spacing:-.02em;line-height:1.15}
+p{margin:0}
+.lead{font-size:clamp(.9375rem,1.1vw,1rem);line-height:1.5;color:var(--ink-soft);max-width:34em}
+.blue{color:var(--blue)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;height:54px;padding:0 28px;border-radius:999px;border:1.5px solid var(--blue);background:var(--blue);color:#fff;font:600 16px/1 var(--text);cursor:pointer;transition:background .2s,border-color .2s,transform .2s}
+.btn:hover{background:var(--blue-dark);border-color:var(--blue-dark)}
+.btn:active{transform:translateY(1px)}
+.btn.ghost{background:transparent;color:var(--blue)}
+.btn.ghost:hover{background:var(--blue-soft)}
+.btn.sm{height:44px;padding:0 20px;font-size:15px}
+.btn.block{width:100%}
+
+/* header */
+/* floating pill bar above the hero photo */
+.header{position:sticky;top:0;z-index:50;padding-top:16px;pointer-events:none}
+.header-in{position:relative;display:flex;align-items:center;gap:12px;height:64px;padding:0 10px 0 28px;border-radius:999px;background:rgba(255,255,255,.82);border:1px solid rgba(255,255,255,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 10px 40px rgba(29,79,232,.08);pointer-events:auto}
+.logo{font:700 24px/1 var(--display);letter-spacing:-.04em}
+.logo i{display:inline-block;width:.28em;height:.28em;border-radius:50%;background:var(--blue);margin-left:.08em}
+.nav{position:absolute;left:50%;transform:translateX(-50%);display:flex;gap:28px;font-size:15px;font-weight:500;white-space:nowrap}
+.nav a{color:var(--ink-soft);transition:color .2s}
+.nav a:hover{color:var(--ink)}
+.contacts{display:flex;align-items:center;gap:12px;margin-left:auto}
+.hdr-cta{display:none}
+.header.scrolled .hdr-cta{display:inline-flex;animation:pop .3s ease both}
+@keyframes pop{from{opacity:0;transform:translateY(-6px)}}
+/* room for the CTA next to the centred menu: drop socials (wide) or the phone (narrower desktops) */
+@media (min-width:1440px){.header.scrolled .contacts .ico{display:none}}
+@media (min-width:1361px) and (max-width:1439.98px){.header.scrolled .contacts .phone{display:none}}
+.phone{font:600 15px var(--text);white-space:nowrap}
+.ico{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--white);border:1px solid var(--fog);transition:border-color .2s,color .2s}
+.ico:hover{border-color:var(--blue);color:var(--blue)}
+.ico svg{width:18px;height:18px;fill:currentColor}
+.burger{display:none;place-items:center;width:40px;height:40px;padding:0;border-radius:50%;background:var(--white);border:1px solid var(--fog);cursor:pointer}
+.burger span,.burger span::before,.burger span::after{display:block;width:16px;height:1.5px;background:var(--ink);border-radius:2px;transition:transform .25s,background .25s}
+.burger span{position:relative}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0}
+.burger span::before{top:-5px}.burger span::after{top:5px}
+.header.open .burger span{background:transparent}
+.header.open .burger span::before{transform:translateY(5px) rotate(45deg)}
+.header.open .burger span::after{transform:translateY(-5px) rotate(-45deg)}
+.mnav{display:none;position:absolute;left:var(--pad);right:var(--pad);top:calc(100% + 8px);background:var(--white);border-radius:24px;box-shadow:0 20px 50px rgba(29,79,232,.12);padding:8px 24px 24px;pointer-events:auto}
+.mnav nav{display:grid;margin-bottom:20px}
+.mnav nav a{padding:14px 0;border-bottom:1px solid var(--fog);font:500 1.25rem/1.2 var(--display);letter-spacing:-.01em}
+.mnav .phone{display:block;margin-bottom:16px;font-size:17px}
+
+/* pill label */
+.pill{display:inline-flex;align-items:center;justify-self:start;height:30px;padding:0 14px;border:1px solid rgba(29,79,232,.35);border-radius:999px;font:600 11px/1 var(--text);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;color:var(--blue)}
+.kicker{margin-bottom:20px}
+
+/* hero: title left, copy + buttons right, wide photo below */
+.hero{padding-top:16px}
+.hero-fold{position:relative;isolation:isolate;overflow:hidden;border-radius:24px;padding:clamp(40px,5vw,80px) clamp(24px,3vw,48px) clamp(24px,3vw,48px)}
+.hero-bg{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:70% 0}
+.hero-fold::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(245,246,249,.9) 0%,rgba(245,246,249,.62) 38%,rgba(245,246,249,0) 68%)}
+.hero-top{display:grid;grid-template-columns:repeat(12,1fr);column-gap:16px;row-gap:28px}
+.hero-head{grid-column:1/10}
+.hero h1{margin-top:-.08em;font:600 clamp(2.25rem,5.2vw,5.5rem)/.95 var(--display);letter-spacing:-.045em}
+.hero h1>*{display:block}
+.hero h1 em{font-style:normal}
+.hero-side{grid-column:1/4;grid-row:2;display:flex;flex-direction:column;gap:20px}
+.hero-side .lead{color:var(--ink);opacity:.75}
+.cta-col{display:grid;gap:8px}
+.btn.arrow{justify-content:space-between;width:100%;height:56px;padding:0 6px 0 24px}
+.btn.arrow i{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#fff;color:var(--blue);transition:transform .25s}
+.btn.arrow.ghost i{background:var(--ink);color:#fff}
+.btn.arrow i svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.btn.arrow:hover i{transform:translateX(3px)}
+.ph{position:relative;overflow:hidden;background:var(--fog);border-radius:var(--r)}
+.ph img{width:100%;height:100%;object-fit:cover}
+
+/* desktop: title + photo fit exactly into the first screen */
+@media (min-width:1001px){
+  .hero-fold{height:calc(100svh - 112px);min-height:560px}
+}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:16px}
+.stat{display:flex;flex-direction:column;justify-content:space-between;gap:20px;min-height:150px;padding:28px;border-radius:24px;background:var(--paper);border:1px solid rgba(255,255,255,.9);box-shadow:0 16px 48px rgba(29,79,232,.08)}
+.stat b{display:block;font:600 clamp(1.375rem,2.6vw,2.5rem)/1 var(--display);letter-spacing:-.04em;white-space:nowrap}
+.stat span{display:block;margin-top:8px;font-size:14px;color:var(--ink-soft);line-height:1.4}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.hero-head,.hero-side{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+.hero-side{animation-delay:.12s}
+
+/* services bento */
+.sec-head{display:grid;grid-template-columns:repeat(12,1fr);column-gap:16px;margin-bottom:clamp(32px,5vw,56px);align-items:end}
+.sec-head h2,.sec-title{grid-column:1/9}
+.sec-title{display:grid;gap:20px;justify-items:start}
+.sec-head:has(.sec-title){align-items:start}
+@media (min-width:1001px){.sec-head:has(.sec-title) p{margin-top:-.3em;line-height:1.55}}
+.sec-head p{grid-column:10/13;color:var(--ink-soft);font-size:14px}
+.svc{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+.svc-head{grid-column:1/7;grid-row:1;align-self:start;display:grid;gap:22px;justify-items:start;padding:4px 32px 0 0}
+.svc-head p{color:var(--ink-soft);font-size:16px;max-width:26em}
+.svc-card{position:relative;isolation:isolate;overflow:hidden;height:clamp(300px,25vw,400px);border-radius:24px;background:var(--fog);cursor:pointer}
+.svc-card img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.svc-card::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(21,26,36,.78),rgba(21,26,36,.18) 55%,rgba(21,26,36,0) 80%)}
+.svc-card:hover img{transform:scale(1.04)}
+.svc-info{position:absolute;left:24px;right:24px;bottom:22px;display:grid;gap:10px;justify-items:start;color:#fff}
+.svc-info h3{font-size:clamp(1.35rem,1.9vw,1.85rem);line-height:1.1}
+.svc-info p{font-size:14px;line-height:1.5;color:rgba(255,255,255,.85);max-width:30em}
+.price{display:inline-flex;align-items:baseline;gap:.3em;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.32);backdrop-filter:blur(8px);font:600 1.05rem/1 var(--display);letter-spacing:-.01em}
+.price small{font:500 .78rem var(--text);opacity:.85}
+.c-chem .price{background:var(--blue);border-color:var(--blue)}
+.go{position:absolute;top:16px;right:16px;display:grid;place-items:center;width:52px;height:52px;padding:0;border:0;border-radius:50%;background:var(--blue);color:#fff;cursor:pointer;transition:transform .3s,background .2s}
+.go svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.svc-card:hover .go{transform:rotate(45deg);background:var(--blue-dark)}
+@media (hover:hover){
+  .svc-info p{max-height:0;margin-top:-10px;opacity:0;overflow:hidden;transition:max-height .35s,margin .35s,opacity .35s}
+  .svc-card:hover .svc-info p,.svc-card:focus-within .svc-info p{max-height:5em;margin-top:0;opacity:1}
+}
+.c-chem{grid-column:7/13;grid-row:1}
+.c-gen{grid-column:1/4}
+.c-rep{grid-column:4/7}
+.c-sup{grid-column:7/10}
+.c-win{grid-column:10/13}
+
+/* why */
+.why{display:grid;grid-template-columns:repeat(12,1fr);column-gap:16px}
+.why-head{grid-column:1/6;align-self:start;position:sticky;top:110px;display:grid;gap:20px}
+.why-list{grid-column:7/13;display:grid;gap:16px;margin:0;padding:0;list-style:none}
+/* soft cards: site background + barely-there blue shadow (same as stats/steps) */
+.why-list li,.faq-list details{border-radius:24px;background:var(--paper);border:1px solid rgba(255,255,255,.9);box-shadow:0 16px 48px rgba(29,79,232,.08)}
+.why-list li{display:grid;grid-template-columns:52px 1fr;column-gap:20px;row-gap:8px;align-items:start;padding:28px;background:var(--white)}
+.why-list li>h3,.why-list li>p{grid-column:2}
+.why-ic{grid-row:1/3;display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:var(--blue);color:#fff;box-shadow:0 8px 20px rgba(29,79,232,.25)}
+.why-ic svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.why-list p{color:var(--ink-soft);max-width:30em}
+
+/* about */
+.about{display:grid;grid-template-columns:repeat(12,1fr);column-gap:16px;align-items:center;row-gap:40px}
+.about .ph{grid-column:1/6;aspect-ratio:4/5;border-radius:24px}
+.about .ph img{object-position:62% 50%}
+.order .ph img{object-position:22% 50%}
+.about-copy{grid-column:7/13;display:flex;flex-direction:column;align-items:flex-start;gap:24px}
+.about-copy .lead+.lead{margin-top:-8px}
+.about-cta{margin-top:auto}
+@media (min-width:1001px){
+  /* text column spans exactly the photo height: pill on top edge, button on bottom edge */
+  .about{align-items:stretch}
+  .about .ph{aspect-ratio:auto;min-height:620px}
+}
+.big-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;width:100%;margin-top:8px}
+.big-nums b{display:block;font:600 clamp(1.75rem,3.4vw,3rem)/1 var(--display);letter-spacing:-.04em;white-space:nowrap}
+.big-nums span{font-size:14px;color:var(--ink-soft);line-height:1.4;display:block;margin-top:8px}
+
+/* steps: a real sequence */
+.process{position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:flex-end;min-height:clamp(520px,44vw,660px);padding:24px;border-radius:24px;background:var(--fog)}
+.process>img{position:absolute;inset:0;z-index:-1;width:100%;height:100%;object-fit:cover;object-position:50% 15%}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;width:100%}
+.step{display:flex;flex-direction:column;padding:24px;border-radius:20px;background:var(--paper);border:1px solid rgba(255,255,255,.9);box-shadow:0 16px 48px rgba(29,79,232,.08)}
+.step .n{display:block;margin-bottom:20px;font:600 clamp(2.25rem,3.2vw,3rem)/1 var(--display);letter-spacing:-.04em;color:var(--blue)}
+.step p{margin-top:8px;color:var(--ink-soft);font-size:14px}
+
+/* results */
+.results{position:relative;overflow:hidden}
+.results .wrap{position:relative}
+.ba{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:16/9;background:var(--fog);--pos:50%;user-select:none;touch-action:pan-y}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba .before{clip-path:inset(0 calc(100% - var(--pos)) 0 0)}
+.ba .line{position:absolute;top:0;bottom:0;left:var(--pos);width:2px;background:#fff;transform:translateX(-1px)}
+.ba .knob{position:absolute;top:50%;left:var(--pos);width:48px;height:48px;border-radius:50%;background:#fff;transform:translate(-50%,-50%);display:grid;place-items:center;box-shadow:0 6px 24px rgba(21,26,36,.25);color:var(--blue);font-weight:700}
+.ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.ba-view{overflow:hidden;border-radius:24px}
+.ba-track{display:flex;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.ba-slide{flex:0 0 100%;margin:0}
+.ba-slide .ba{border-radius:0}
+.ba-bar{display:flex;justify-content:space-between;align-items:center;gap:16px 24px;flex-wrap:wrap;margin-top:16px}
+.ba-cap{display:grid;gap:2px}
+.ba-cap b{font:600 1.125rem/1.2 var(--display);letter-spacing:-.01em}
+.ba-cap span{font-size:13px;color:var(--ink-soft)}
+.ba-nav{display:flex;align-items:center;gap:12px}
+.ba-count{font:500 14px var(--display);color:var(--ink-soft);min-width:56px}
+.ba-count b{color:var(--ink);font-weight:600}
+.ba-dots{display:flex;gap:6px;margin-right:4px}
+.ba-dots button{width:8px;height:8px;padding:0;border:0;border-radius:999px;background:var(--fog);cursor:pointer;transition:width .3s,background .3s}
+.ba-dots button[aria-current="true"]{width:24px;background:var(--blue)}
+.ba-btn{display:grid;place-items:center;width:52px;height:52px;padding:0;border-radius:50%;border:1.5px solid var(--blue);background:transparent;color:var(--blue);cursor:pointer;transition:background .2s,color .2s}
+.ba-btn:hover{background:var(--blue);color:#fff}
+.ba-btn:disabled{opacity:.35;cursor:default;background:transparent;color:var(--blue)}
+.ba-btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tag{position:absolute;top:16px;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.92);font:600 13px var(--text);box-shadow:0 4px 14px rgba(21,26,36,.18)}
+.tag.l{left:16px}.tag.r{right:16px}
+.note{font-size:13px;color:var(--ink-soft);margin-top:12px}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+.review{background:var(--white);border:0;border-radius:24px;padding:28px;display:grid;grid-template-rows:auto 1fr auto;gap:18px;box-shadow:0 16px 48px rgba(29,79,232,.08)}
+/* middle review: blue accent card */
+.review:nth-child(2){background:var(--blue);color:#fff;box-shadow:0 16px 48px rgba(29,79,232,.18)}
+.review:nth-child(2) .stars{color:#fff}
+.review:nth-child(2) .who span{color:rgba(255,255,255,.75)}
+.review:nth-child(2) .avatar{box-shadow:0 0 0 3px var(--blue),0 0 0 5px rgba(255,255,255,.45)}
+.stars{color:var(--blue);letter-spacing:.15em;font-size:15px}
+.who{display:flex;align-items:center;gap:12px;font-size:14px}
+.who b{display:block;font-weight:600}
+.who span{color:var(--ink-soft)}
+.avatar{flex:0 0 auto;width:48px;height:48px;border-radius:50%;object-fit:cover;background:var(--blue-soft);box-shadow:0 0 0 3px var(--white),0 0 0 5px var(--blue-soft)}
+
+/* faq */
+.faq{display:grid;grid-template-columns:repeat(12,1fr);column-gap:16px}
+.faq-head{grid-column:1/6;align-self:start;display:grid;gap:20px}
+.faq-list{grid-column:7/13}
+.faq-list{display:grid;gap:12px;align-content:start}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:24px;align-items:center;padding:24px 28px;font:500 1.125rem/1.35 var(--display);letter-spacing:-.01em}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font:400 28px/1 var(--text);color:var(--blue);transition:transform .25s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 76px 24px 28px;color:var(--ink-soft)}
+
+/* form */
+.order{display:grid;grid-template-columns:repeat(12,1fr);column-gap:16px;row-gap:24px;align-items:stretch}
+.form-card{grid-column:1/7;background:var(--white);border-radius:24px;padding:clamp(24px,4vw,48px);border:1px solid var(--fog)}
+.form-card h2{font-size:clamp(1.75rem,3.4vw,2.75rem);margin-bottom:12px}
+.form-card .lead{font-size:15px;margin-bottom:28px}
+.field{display:grid;gap:8px;margin-bottom:18px}
+.field label{font-size:14px;font-weight:500;color:var(--ink-soft)}
+.field label i{color:var(--blue);font-style:normal}
+.field input,.field select,.field textarea{width:100%;height:56px;padding:0 18px;border-radius:var(--r-s);border:1.5px solid var(--fog);background:var(--paper);transition:border-color .2s,box-shadow .2s,background .2s}
+.field textarea{height:110px;padding:14px 18px;resize:vertical}
+.field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' fill='none' stroke='%231D4FE8' stroke-width='2'%3E%3Cpath d='m1 1 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 18px center;padding-right:44px}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--blue);background-color:#fff;box-shadow:0 0 0 4px rgba(29,79,232,.12)}
+.field .err{display:none;font-size:13px;color:var(--err)}
+.field.bad input{border-color:var(--err)}
+.field.bad .err{display:block}
+.legal{font-size:13px;color:var(--ink-soft);margin-top:14px;line-height:1.5}
+.legal a{color:var(--blue);text-decoration:underline;text-underline-offset:2px}
+/* success popup after sending a request */
+dialog.thx{width:min(460px,calc(100% - 24px));text-align:center}
+.thx .dlg-in{display:grid;justify-items:center;gap:14px;padding:clamp(28px,4vw,40px)}
+.thx-ic{display:grid;place-items:center;width:72px;height:72px;margin-bottom:4px;border-radius:50%;background:var(--blue);color:#fff;box-shadow:0 12px 30px rgba(29,79,232,.25)}
+.thx-ic svg{width:32px;height:32px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.thx[open] .thx-ic{animation:thxPop .45s cubic-bezier(.2,.9,.3,1.4) both}
+@keyframes thxPop{from{transform:scale(.6);opacity:0}}
+dialog.thx h2{margin:0;padding:0 8px;font-size:clamp(1.5rem,3vw,1.85rem);line-height:1.1}
+dialog.thx .lead{margin:0 auto;font-size:15px}
+.thx .lead b{font-weight:600;white-space:nowrap;color:var(--ink)}
+.thx-sum{width:100%;margin:6px 0 4px;padding:6px 18px;border-radius:16px;background:var(--paper);text-align:left;font-size:14px}
+.thx-sum div{display:flex;justify-content:space-between;gap:16px;padding:10px 0}
+.thx-sum div+div{border-top:1px solid var(--fog)}
+.thx-sum span{color:var(--ink-soft)}
+.thx-sum div:last-child:nth-child(3) b{white-space:nowrap}
+.thx-sum b{font-weight:600;text-align:right}
+.thx-note{font-size:13px;color:var(--ink-soft)}
+.thx .btn{width:100%;margin-top:6px}
+dialog.thx{overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none}
+dialog.thx::-webkit-scrollbar{display:none}
+.thx .dlg-in:focus{outline:none}
+@media (max-width:760px){
+  /* centred card with side margins (16px = site gutter) */
+  dialog.dlg.thx{width:calc(100% - 32px);max-width:460px;margin:auto;border-radius:24px;max-height:calc(100dvh - 32px)}
+  .thx .dlg-in{gap:12px;padding:28px 20px 22px}
+  .thx .x{right:12px;top:12px}
+}
+/* short screens (small phones, landscape): compact popup so it fits without scrolling */
+@media (max-height:700px){
+  .thx .dlg-in{gap:10px;padding-top:22px;padding-bottom:calc(16px + env(safe-area-inset-bottom))}
+  .thx-ic{width:52px;height:52px;margin-bottom:0}.thx-ic svg{width:24px;height:24px}
+  dialog.thx h2{font-size:1.35rem}
+  dialog.thx .lead{font-size:14px;line-height:1.45}
+  .thx-sum{margin:2px 0;padding:2px 16px}.thx-sum div{padding:8px 0}
+  .thx-note{font-size:12px}
+  .thx .btn{height:48px;margin-top:2px}
+}
+.order .ph{grid-column:7/13;border-radius:24px;min-height:420px}
+.order .ph .badge{position:absolute;left:20px;right:20px;bottom:20px;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-radius:var(--r);padding:18px 20px;display:flex;gap:14px;align-items:center;font-size:15px}
+.badge b{flex:0 0 auto;white-space:nowrap;font:600 1.75rem/1 var(--display);color:var(--blue);letter-spacing:-.03em}
+
+/* footer: dark rounded card, wordmark spans full card width */
+.footer{padding:0 0 24px}
+.fcard{--fp:clamp(20px,3vw,40px);container-type:inline-size;overflow:hidden;padding:0 var(--fp) var(--fp);border-radius:24px;background:var(--ink);color:var(--paper)}
+.fword{display:block;margin:0 0 clamp(32px,4vw,56px) -.03em;padding-top:.04em;font:700 calc(100cqi / 4.6)/.8 var(--display);letter-spacing:-.065em;white-space:nowrap;color:var(--paper);user-select:none}
+.fword i{display:inline-block;width:.15em;height:.15em;margin-left:.03em;border-radius:50%;background:var(--blue)}
+.fgrid{display:grid;grid-template-columns:repeat(12,1fr);gap:32px 16px}
+.fq{grid-column:1/6}
+.fq h3{font-size:clamp(1.5rem,2.4vw,2.25rem);line-height:1.05}
+.fq p{margin:12px 0 20px;font-size:15px;color:rgba(245,246,249,.6)}
+.fsoc{display:flex;gap:10px}
+.fsoc a{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:var(--paper);color:var(--ink);transition:background .2s,color .2s}
+.fsoc a:hover{background:var(--blue);color:#fff}
+.fsoc svg{width:20px;height:20px;fill:currentColor}
+.fcol{grid-column:span 2;display:grid;gap:10px;align-content:start;font-size:15px}
+.fcol:first-of-type{grid-column:7/9}
+.fcol h4{margin:0 0 4px;font:600 11px/1 var(--text);letter-spacing:.08em;text-transform:uppercase;color:rgba(245,246,249,.5)}
+.fcol a{color:var(--paper);transition:color .2s}.fcol a:hover{color:#9DB5FF}
+.fcol span{color:rgba(245,246,249,.6)}
+.fbottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 24px;padding:20px 4px 0;font-size:13px;color:var(--ink-soft)}
+.fbottom a:hover{color:var(--ink)}
+/* calculator dialog */
+dialog.dlg{border:0;border-radius:24px;padding:0;width:min(520px,calc(100% - 24px));max-height:calc(100dvh - 24px);background:var(--white);color:var(--ink);box-shadow:0 30px 80px rgba(21,26,36,.35)}
+dialog.dlg::backdrop{background:rgba(21,26,36,.55);backdrop-filter:blur(4px)}
+.dlg-in{padding:clamp(22px,4vw,36px);position:relative}
+.dlg h2{font-size:1.75rem;margin-bottom:6px;padding-right:48px}
+.dlg .lead{font-size:14px;margin-bottom:22px}
+.x{position:absolute;right:14px;top:14px;width:40px;height:40px;border-radius:50%;border:0;background:var(--paper);cursor:pointer;font-size:20px;line-height:1}
+.x:hover{background:var(--fog)}
+.sum{background:var(--blue-soft);border-radius:var(--r);padding:18px 22px;margin:4px 0 20px}
+.sum span{font-size:14px;color:var(--ink-soft)}
+.sum b{display:block;font:600 2.25rem/1.1 var(--display);letter-spacing:-.04em;color:var(--blue)}
+.sum small{display:block;margin-top:6px;color:var(--ink-soft);font-size:13px;line-height:1.45}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+[hidden]{display:none!important}
+
+/* privacy policy dialog */
+dialog.pol{width:min(900px,calc(100% - 24px));background:var(--paper)}
+dialog.dlg:focus,dialog.dlg:focus-visible{outline:none}
+dialog.pol[open]{display:flex;flex-direction:column;max-height:min(88dvh,920px)}
+.pol-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:clamp(20px,3vw,32px) clamp(20px,3vw,32px) 18px;border-bottom:1px solid var(--fog)}
+.pol-head .x{position:static;flex:0 0 auto;background:var(--white)}
+.pol .pol-head h2{margin:14px 0 0;padding:0;font-size:clamp(1.75rem,3.4vw,2.5rem)}
+.pol-body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;display:grid;gap:12px;align-content:start;padding:20px clamp(16px,3vw,32px) clamp(20px,3vw,32px)}
+.pol-intro{margin-bottom:4px;font-size:15px;color:var(--ink-soft)}
+.pol-sec{padding:clamp(20px,2.6vw,32px);border-radius:24px;background:var(--paper);border:1px solid rgba(255,255,255,.9);box-shadow:0 16px 48px rgba(29,79,232,.08)}
+.pol .pol-sec h3{display:flex;gap:12px;align-items:baseline;margin:0 0 14px;padding:0;font-size:clamp(1.2rem,1.8vw,1.5rem);line-height:1.15}
+.pol-sec h3 span{font-size:.75em;color:var(--blue)}
+.pol-sec p,.pol-sec li{font-size:15px;color:#3B4350}
+.pol-sec p+p,.pol-sec p+ul,.pol-sec ul+p{margin-top:12px}
+.pol-sec ul{display:grid;gap:6px;margin:0;padding-left:20px}
+.pol-sec li::marker{color:var(--blue)}
+.pol-sec .contact{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.pol-sec .contact div{padding:14px 16px;border-radius:16px;background:var(--white);font-size:15px}
+.pol-sec .contact small{display:block;margin-bottom:4px;font:600 11px/1 var(--text);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+.pol-sec .contact a{font-weight:600}
+@media (max-width:760px){.pol-sec .contact{grid-template-columns:1fr}}
+/* mobile bar */
+.mbar{display:none}
+
+@media (max-width:1360.98px){
+  .nav{display:none}
+  .burger{display:grid}.header.open .mnav{display:block}
+  .header .mnav .btn{display:flex}
+  .hero-side{grid-column:1/5}
+}
+@media (max-width:1000px){
+  .sec-head h2,.sec-title,.sec-head p{grid-column:1/-1}.sec-head p{margin-top:12px}
+  .hero-head,.hero-side{grid-column:1/-1}.hero-side{max-width:560px}
+  .hero-fold{padding-bottom:clamp(260px,40vw,380px)}
+  .hero-fold::before{background:linear-gradient(180deg,rgba(245,246,249,.92) 0%,rgba(245,246,249,.8) 50%,rgba(245,246,249,0) 78%)}
+  .svc-head{grid-column:1/-1;padding:0 0 16px}
+  .c-gen,.c-rep,.c-sup,.c-win{grid-column:span 6}.c-chem{grid-column:1/-1;grid-row:auto}
+  .why-head,.why-list,.faq-head,.faq-list{grid-column:1/-1;position:static}.why-head,.faq-head{margin-bottom:32px}
+  .about .ph,.about-copy{grid-column:1/-1}.about .ph{aspect-ratio:16/9}
+  .steps{grid-template-columns:repeat(2,1fr)}.process{min-height:620px}
+  .reviews{grid-template-columns:1fr}
+  .form-card,.order .ph{grid-column:1/-1}.order .ph{min-height:320px}
+  .fq{grid-column:1/-1}.fcol,.fcol:first-of-type{grid-column:span 4}
+}
+@media (max-width:760px){
+  body{font-size:16px;padding-bottom:76px}
+  .header{padding-top:12px}
+  .header-in{height:56px;gap:8px;padding:0 6px 0 20px}.header-in .ico,.burger{width:40px;height:40px}
+  .hero{padding-top:12px}.hero-fold{padding:32px 20px 380px;border-radius:20px;background:var(--white)}
+  .hero-bg{top:auto;height:360px;object-position:72% 50%}
+  .hero-fold::before{background:linear-gradient(180deg,#fff 0,#fff calc(100% - 362px),rgba(255,255,255,0) calc(100% - 320px))}.phone{display:none}.header .btn,.header.scrolled .hdr-cta{display:none}
+  .hero-top{row-gap:20px}
+  .hero h1{font-size:clamp(2.1rem,9.6vw,2.75rem);line-height:1.02}
+  .hero h1>*{display:inline}
+  .btn.arrow{height:56px;padding-left:24px}.btn.arrow i{width:44px;height:44px}
+
+  .svc-card{height:320px}.svc-info{left:20px;right:20px;bottom:20px}
+  .big-nums{gap:12px}.about .ph{aspect-ratio:4/3}
+  .fcol,.fcol:first-of-type{grid-column:span 6}.fcol:last-child{grid-column:1/-1}.fbottom{flex-direction:column}
+  dialog.dlg{width:100%;max-width:100%;margin:auto 0 0;border-radius:24px 24px 0 0;max-height:92dvh}
+  .stats{grid-template-columns:1fr 1fr;gap:12px}.stat{min-height:132px;padding:20px}
+  .c-gen,.c-rep,.c-sup,.c-chem,.c-win{grid-column:1/-1}
+  .big-nums{grid-template-columns:1fr 1fr 1fr}
+  .process{display:block;min-height:0;padding:0;overflow:visible;border-radius:0;background:none}
+  .process>img{position:static;height:auto;aspect-ratio:4/3;border-radius:24px}
+  .steps{grid-template-columns:1fr;gap:12px;margin-top:12px}.step{padding:20px}.step .n{margin-bottom:14px}
+  .ba{aspect-ratio:16/10}.ba-view{border-radius:20px}.ba-btn{width:44px;height:44px}.ba-bar{align-items:flex-end}
+  .row2{grid-template-columns:1fr}
+  details p{padding-right:28px}.why-list li{padding:22px;grid-template-columns:44px 1fr;column-gap:16px}.why-ic{width:44px;height:44px}.why-ic svg{width:20px;height:20px}summary{padding:20px 22px}details p{padding-left:22px;padding-right:22px}
+  .mbar{display:grid;grid-template-columns:1fr 52px 52px;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-top:1px solid var(--fog);transform:translateY(110%);visibility:hidden;transition:transform .3s,visibility 0s .3s}
+  .mbar.show{transform:none;visibility:visible;transition:transform .3s}
+  .mbar .btn{height:52px;padding:0 12px}.mbar .ico{width:52px;height:52px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="wrap"><div class="header-in">
+    <a class="logo" href="#top" aria-label="CleanSpot, на початок">CleanSpot<i></i></a>
+    <nav class="nav" aria-label="Основне меню">
+      <a href="#services">Послуги</a><a href="#about">Про нас</a><a href="#process">Як ми працюємо</a><a href="#results">Відгуки</a><a href="#faq">FAQ</a>
+    </nav>
+    <div class="contacts">
+      <!-- TODO: замінити на справжні контакти -->
+      <a class="phone" href="tel:+380674821935">+380 (67) 482 19 35</a>
+      <a class="ico" href="https://t.me/cleanspot_dnipro" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><svg viewBox="0 0 24 24"><path d="M21.9 4.3 18.6 19.5c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L5.9 13.1l-5-1.5c-1.1-.3-1.1-1.1.2-1.6L20.4 2.5c.9-.3 1.7.2 1.5 1.8Z"/></svg></a>
+      <a class="ico" href="https://instagram.com/cleanspot.dnipro" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7.2A4.8 4.8 0 1 0 12 16.8 4.8 4.8 0 0 0 12 7.2Zm0 7.9a3.1 3.1 0 1 1 0-6.2 3.1 3.1 0 0 1 0 6.2ZM17.3 6.1a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2ZM12 2.2c-2.7 0-3 0-4.1.1-1.1 0-1.8.2-2.4.5-.7.3-1.2.6-1.8 1.2-.6.6-.9 1.1-1.2 1.8-.3.6-.4 1.3-.5 2.4C2 9.3 2 9.6 2 12.3s0 3 .1 4.1c0 1.1.2 1.8.5 2.4.3.7.6 1.2 1.2 1.8.6.6 1.1.9 1.8 1.2.6.3 1.3.4 2.4.5 1.1.1 1.4.1 4.1.1s3 0 4.1-.1c1.1 0 1.8-.2 2.4-.5.7-.3 1.2-.6 1.8-1.2.6-.6.9-1.1 1.2-1.8.3-.6.4-1.3.5-2.4.1-1.1.1-1.4.1-4.1s0-3-.1-4.1c0-1.1-.2-1.8-.5-2.4-.3-.7-.6-1.2-1.2-1.8-.6-.6-1.1-.9-1.8-1.2-.6-.3-1.3-.4-2.4-.5C15 2.2 14.700 2.200 12 2.200Zm0 1.800c2.700 0 3 0 4 .1.9 0 1.400.2 1.800.3.500.200.800.400 1.100.700.400.400.600.700.700 1.100.100.400.300.900.300 1.800.100 1 .100 1.300.100 4s0 3-.100 4c0 .900-.200 1.400-.300 1.800-.200.500-.400.800-.700 1.100-.400.400-.700.600-1.100.700-.400.100-.900.300-1.800.300-1 .100-1.300.100-4 .100s-3 0-4-.1c-.9 0-1.400-.2-1.800-.3-.500-.2-.800-.4-1.100-.7-.4-.4-.6-.7-.7-1.100-.1-.4-.3-.9-.3-1.800-.1-1-.1-1.300-.1-4s0-3 .1-4c0-.9.2-1.400.3-1.800.2-.5.4-.8.7-1.100.4-.4.7-.6 1.100-.7.4-.1.9-.3 1.800-.3 1-.1 1.300-.1 4-.1Z"/></svg></a>
+    </div>
+    <button class="btn sm hdr-cta" data-service="">Замовити прибирання</button>
+    <button class="burger" type="button" aria-label="Відкрити меню" aria-expanded="false" aria-controls="mnav"><span></span></button>
+  </div></div>
+  <div class="mnav" id="mnav">
+    <nav aria-label="Мобільне меню">
+      <a href="#services">Послуги</a><a href="#about">Про нас</a><a href="#process">Як ми працюємо</a><a href="#results">Відгуки</a><a href="#faq">FAQ</a>
+    </nav>
+    <!-- TODO: замінити телефон -->
+    <a class="phone" href="tel:+380674821935">+380 (67) 482 19 35</a>
+    <button class="btn block" data-service="">Замовити прибирання</button>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- 1. HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-fold">
+      <img width="2400" height="1340" class="hero-bg" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_2400/v1791446152/3_pxuujr.jpg" fetchpriority="high" decoding="async" alt="Клінерка CleanSpot миє підлогу пароочисником Kärcher у світлій кухні" onerror="this.style.visibility='hidden'">
+    <div class="hero-top">
+      <div class="hero-head">
+        <h1><span>Ідеальна чистота</span> <span>вашого дому у&nbsp;Дніпрі</span> <em class="blue">без зайвих турбот</em></h1>
+      </div>
+      <div class="hero-side">
+        <!-- TODO: підтвердити «безпечні засоби» документом виробника -->
+        <p class="lead">Професійна бригада, безпечні засоби і ціна, яка не змінюється після прибирання.</p>
+        <div class="cta-col">
+          <button class="btn arrow" data-service="">Замовити прибирання<i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></button>
+          <button class="btn ghost arrow" data-open-calc>Розрахувати вартість<i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></button>
+        </div>
+      </div>
+    </div>
+
+    </div>
+    <!-- TODO: цифри тимчасові (концепт), замінити на справжні -->
+    <div class="stats">
+      <div class="stat"><b>100%</b><span>Гарантія якості, інакше переробимо</span></div>
+      <div class="stat"><b>60 хв</b><span>Середній час виїзду бригади</span></div>
+      <div class="stat"><b>50 000 грн</b><span>Страхування вашого майна</span></div>
+      <div class="stat"><b>Kärcher</b><span>Професійна німецька хімія та техніка</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. SERVICES -->
+<section class="section" id="services">
+  <div class="wrap">
+    <div class="svc">
+      <div class="svc-head">
+        <span class="pill">Послуги</span>
+        <h2>Що ми можемо <span class="blue">запропонувати</span></h2>
+        <p>Ціна вказана за м² або за предмет. Остаточну суму називаємо до початку робіт, і вона не змінюється.</p>
+      </div>
+      <!-- TODO: ціни тимчасові, крім 45 грн/м² і 1 200 грн -->
+      <article class="svc-card c-chem"><img width="1600" height="893" loading="lazy" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1600/v1791447824/6_ttgzoz.jpg" alt="Клінер CleanSpot чистить диван мийним пилососом Kärcher" style="object-position:45% 35%" onerror="this.style.visibility='hidden'">
+        <div class="svc-info"><h3>Хімчистка меблів і килимів</h3><p>Дивани, крісла, матраци, килими. Прибираємо плями та запахи, не пошкоджуючи тканину.</p><span class="price"><small>від</small>1 200 грн</span></div>
+        <button class="go" data-service="chem" aria-label="Замовити: Хімчистка меблів і килимів"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></button></article>
+      <article class="svc-card c-gen"><img width="1200" height="670" loading="lazy" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1200/v1791448360/8_kju8sz.jpg" alt="Бригада CleanSpot робить генеральне прибирання кухні-вітальні" style="object-position:38% 50%" onerror="this.style.visibility='hidden'">
+        <div class="svc-info"><h3>Генеральне прибирання</h3><p>Глибока чистка кожної зони: від стелі до плінтусів, кухня, санвузли, вікна зсередини.</p><span class="price"><small>від</small>45 грн/м²</span></div>
+        <button class="go" data-service="general" aria-label="Замовити: Генеральне прибирання"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></button></article>
+      <article class="svc-card c-rep"><img width="1200" height="670" loading="lazy" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1200/v1791448360/7_ofwhjb.jpg" alt="Бригада CleanSpot прибирає квартиру після ремонту: пилосос, швабра, миття вікон" style="object-position:20% 45%" onerror="this.style.visibility='hidden'">
+        <div class="svc-info"><h3>Прибирання після ремонту</h3><p>Видаляємо будівельний пил, клей і фарбу. Квартира готова до заселення.</p><span class="price"><small>від</small>60 грн/м²</span></div>
+        <button class="go" data-service="repair" aria-label="Замовити: Прибирання після ремонту"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></button></article>
+      <article class="svc-card c-sup"><img width="1200" height="670" loading="lazy" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1200/v1791448596/9_mocch9.jpg" alt="Клінерка витирає пил із полиць у світлій вітальні" style="object-position:66% 40%" onerror="this.style.visibility='hidden'">
+        <div class="svc-info"><h3>Підтримуюче прибирання</h3><p>Регулярна чистота без зайвого навантаження: пил, підлога, санвузли, кухня.</p><span class="price"><small>від</small>30 грн/м²</span></div>
+        <button class="go" data-service="support" aria-label="Замовити: Підтримуюче прибирання"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></button></article>
+      <article class="svc-card c-win"><img width="1600" height="893" loading="lazy" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_1600/v1791447824/5_kt2cqt.jpg" alt="Клінерка CleanSpot миє вікно віконним пилососом Kärcher" style="object-position:38% 30%" onerror="this.style.visibility='hidden'">
+        <div class="svc-info"><h3>Миття вікон і балконів</h3><p>Вікна, балкони й вітражі зсередини та ззовні, без розводів.</p><span class="price"><small>від</small>80 грн/м²</span></div>
+        <button class="go" data-service="windows" aria-label="Замовити: Миття вікон і балконів"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></button></article>
+    </div>
+  </div>
+</section>
+
+<!-- 3. WHY -->
+<section class="section" style="background:var(--white)">
+  <div class="wrap why">
+    <div class="why-head"><span class="pill">Переваги</span><h2>Чому нам <span class="blue">довіряють</span> свій дім</h2></div>
+    <ul class="why-list">
+      <li><span class="why-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12.6 2.6A2 2 0 0 0 11.2 2H4a2 2 0 0 0-2 2v7.2a2 2 0 0 0 .6 1.4l8.7 8.7a2.4 2.4 0 0 0 3.4 0l6.6-6.6a2.4 2.4 0 0 0 0-3.4z"/><circle cx="7.5" cy="7.5" r="1.2"/></svg></span><h3>Фіксована ціна без доплат</h3><p>Називаємо суму до початку робіт, і на фініші вона не змінюється.</p></li>
+      <li><span class="why-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m16 11 2 2 4-4"/></svg></span><h3>Перевірені та навчені клінери</h3><p>Постійна бригада з перевіреним минулим, а не випадкові люди.</p></li>
+      <li><span class="why-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9.9 15.5a2 2 0 0 0-1.4-1.4l-6.1-1.6a.5.5 0 0 1 0-1l6.1-1.6a2 2 0 0 0 1.4-1.4l1.6-6.1a.5.5 0 0 1 1 0l1.6 6.1a2 2 0 0 0 1.4 1.4l6.1 1.6a.5.5 0 0 1 0 1l-6.1 1.6a2 2 0 0 0-1.4 1.4l-1.6 6.1a.5.5 0 0 1-1 0z"/><path d="M20 3v4M22 5h-4M4 17v2M5 18H3"/></svg></span><h3>Професійні засоби</h3><p>Хімія Kärcher, яку підбираємо під кожну поверхню.</p></li>
+      <li><span class="why-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2M2 13h20M10 13v2h4v-2"/></svg></span><h3>Власний інвентар</h3><p>Приїжджаємо з технікою й засобами. Вам нічого не потрібно купувати чи готувати.</p></li>
+      <li><span class="why-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.6 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span><h3>Гарантія й страхування</h3><p>Переробимо безкоштовно протягом 24 годин, якщо щось не влаштувало. Майно застраховане до 50 000 грн.</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 4. ABOUT -->
+<section class="section" id="about">
+  <div class="wrap about">
+    <figure class="ph" style="margin:0"><img width="1200" height="1340" loading="lazy" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/c_crop,g_north_west,x_0,y_0,w_1376,h_1536/f_auto,q_auto,w_1200/v1791447470/4_vbdxwt.jpg" alt="Клінер CleanSpot пилососить вітальню професійним пилососом Kärcher" onerror="this.style.visibility='hidden'"></figure>
+    <div class="about-copy">
+      <span class="pill">Про нас</span>
+      <h2>Прибираємо так, ніби це наш <span class="blue">власний дім</span></h2>
+      <p class="lead">CleanSpot працює у Дніпрі три роки. Ми почали з однієї бригади й одного правила: клієнт платить лише тоді, коли бачить результат. Сьогодні в команді навчені клінери, професійна техніка та чіткий порядок роботи на кожному об'єкті.</p>
+      <p class="lead">Ми не передаємо замовлення стороннім виконавцям: на кожен об'єкт виїжджає наша власна бригада зі своїм інвентарем і засобами. Обсяг і ціну узгоджуємо до початку робіт, а після прибирання ви приймаєте результат разом із бригадиром.</p>
+      <!-- TODO: цифри тимчасові -->
+      <div class="big-nums">
+        <div><b>1 500+</b><span>прибраних<br>об'єктів</span></div>
+        <div><b>98%</b><span>клієнтів повертаються<br>до нас знову</span></div>
+        <div><b>3+</b><span>роки на ринку<br>Дніпра</span></div>
+      </div>
+      <div class="about-cta"><button class="btn" data-service="">Замовити прибирання</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. PROCESS -->
+<section class="section" id="process" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head"><div class="sec-title"><span class="pill">Процес</span><h2>Як ми <span class="blue">працюємо</span></h2></div><p>Ціну фіксуємо заздалегідь, а платите ви лише за прийнятий результат.</p></div>
+    <div class="process">
+      <img width="2400" height="1340" loading="lazy" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_2400/v1791446152/2_f5prcz.jpg" alt="Двоє клінерів CleanSpot миють панорамні вікна у світлій квартирі" onerror="this.style.visibility='hidden'">
+    <div class="steps">
+      <div class="step"><span class="n">01</span><h3>Заявка</h3><p>Залишаєте заявку на сайті або телефонуєте нам.</p></div>
+      <div class="step"><span class="n">02</span><h3>Уточнення</h3><p>Узгоджуємо обсяг робіт і час та фіксуємо вартість.</p></div>
+      <div class="step"><span class="n">03</span><h3>Прибирання</h3><p>Бригада приїжджає з усім необхідним і виконує роботу.</p></div>
+      <div class="step"><span class="n">04</span><h3>Оплата</h3><p>Ви перевіряєте якість і платите за результат.</p></div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. RESULTS -->
+<section class="section results" id="results" style="background:var(--white)">
+  <div class="wrap">
+    <div class="sec-head"><div class="sec-title"><span class="pill">Результати</span><h2>Результат, який видно <span class="blue">одразу</span></h2></div><p>Посуньте повзунок, щоб порівняти кімнату до й після прибирання. А нижче відгуки клієнтів із різних районів Дніпра, які вже довірили нам свій дім.</p></div>
+    <!-- Слайдер До/Після: кожен кадр має власний повзунок; пари знято з однієї точки -->
+    <div class="ba-slider" id="baSlider" aria-roledescription="карусель">
+      <div class="ba-view"><div class="ba-track">
+        <figure class="ba-slide" data-title="Хімчистка дивана">
+          <div class="ba">
+            <img loading="lazy" width="2000" height="1116" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_2000/v1791446928/4_%D0%B4%D0%B8%D0%B2%D0%B0%D0%BD_%D0%BF%D0%BE%D1%81%D0%BB%D0%B5_yagq5s.jpg" alt="Диван після хімчистки: чиста світла тканина без плям" onerror="this.style.visibility='hidden'">
+            <img width="2000" height="1116" class="before" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_2000/v1791446928/4_%D0%B4%D0%B8%D0%B2%D0%B0%D0%BD_%D0%B4%D0%BE_o3fjam.jpg" alt="Диван до хімчистки: плями й забруднення на подушках" loading="lazy" onerror="this.style.visibility='hidden'">
+            <span class="tag l">До</span><span class="tag r">Після</span>
+            <div class="line"></div><div class="knob" aria-hidden="true">↔</div>
+            <input type="range" min="0" max="100" value="50" aria-label="Порівняння до і після: Хімчистка дивана">
+          </div>
+        </figure>        <figure class="ba-slide" data-title="Генеральне прибирання кухні">
+          <div class="ba">
+            <img loading="lazy" width="2000" height="1116" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_2000/v1791446930/5_%D0%BA%D1%83%D1%85%D0%BD%D1%8F_%D0%BF%D0%BE%D1%81%D0%BB%D0%B5_siwljg.jpg" alt="Кухня після прибирання: чисті поверхні й підлога" onerror="this.style.visibility='hidden'">
+            <img width="2000" height="1116" class="before" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_2000/v1791446931/5_%D0%BA%D1%83%D1%85%D0%BD%D1%8F_%D0%B4%D0%BE_bsffex.jpg" alt="Кухня до прибирання: брудний посуд, крихти й плями на підлозі" loading="lazy" onerror="this.style.visibility='hidden'">
+            <span class="tag l">До</span><span class="tag r">Після</span>
+            <div class="line"></div><div class="knob" aria-hidden="true">↔</div>
+            <input type="range" min="0" max="100" value="50" aria-label="Порівняння до і після: Генеральне прибирання кухні">
+          </div>
+        </figure>        <figure class="ba-slide" data-title="Прибирання після ремонту">
+          <div class="ba">
+            <img width="2000" height="1116" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_2000/v1791449074/11_jh70zk.jpg" alt="Кухня-вітальня після прибирання: чиста підлога, острови й обідня зона" loading="lazy" onerror="this.style.visibility='hidden'">
+            <img width="2000" height="1116" class="before" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/f_auto,q_auto,w_2000/v1791449074/10_r8rlnd.jpg" alt="Кухня-вітальня після ремонту: плівка, картон, будівельне сміття" loading="lazy" onerror="this.style.visibility='hidden'">
+            <span class="tag l">До</span><span class="tag r">Після</span>
+            <div class="line"></div><div class="knob" aria-hidden="true">↔</div>
+            <input type="range" min="0" max="100" value="50" aria-label="Порівняння до і після: Прибирання після ремонту">
+          </div>
+        </figure>      </div></div>
+      <div class="ba-bar">
+        <p class="ba-cap"><b id="baTitle">Хімчистка дивана</b><span>Посуньте повзунок, щоб побачити різницю</span></p>
+        <div class="ba-nav">
+          <span class="ba-count"><b id="baNum">01</b> / <span id="baTotal">02</span></span>
+          <div class="ba-dots" id="baDots"></div>
+          <button class="ba-btn" type="button" data-dir="-1" aria-label="Попередній результат"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+          <button class="ba-btn" type="button" data-dir="1" aria-label="Наступний результат"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- TODO: тестові відгуки й стокові фото (Unsplash), замінити реальними відгуками та фото з дозволом клієнтів -->
+    <div class="reviews">
+      <article class="review"><div class="stars" aria-label="5 з 5">★★★★★</div><p>Диван світлий, а вдома кіт і дитина із соками, тож плями збиралися роками. Хлопці приїхали з Kärcher і за дві години відчистили подушки, навіть стару пляму від кави. До вечора все висохло, запаху хімії не було.</p><div class="who"><img class="avatar" loading="lazy" width="120" height="120" src="https://images.unsplash.com/photo-1536914356815-690cf1fa40e2?auto=format&fit=facearea&facepad=2.5&w=120&h=120&q=75" alt="Олена В." onerror="this.style.visibility='hidden'"><div><b>Олена В.</b><span>Хімчистка дивана, Перемога</span></div></div></article>
+      <article class="review"><div class="stars" aria-label="5 з 5">★★★★★</div><p>Після свята кухня виглядала гірше, ніж на фото «до». Замовив генеральне на ранок: відмили плиту, фасади, холодильник усередині й підлогу. Ціну назвали по телефону, 2 700 грн за наші 60 м², так і вийшло.</p><div class="who"><img class="avatar" loading="lazy" width="120" height="120" src="https://images.unsplash.com/photo-1758523668629-84908c91a66c?auto=format&fit=facearea&facepad=2.5&w=120&h=120&q=75" alt="Андрій М." onerror="this.style.visibility='hidden'"><div><b>Андрій М.</b><span>Прибирання кухні, Центр</span></div></div></article>
+      <article class="review"><div class="stars" aria-label="5 з 5">★★★★★</div><p>Ремонт у новобудові тривав пів року, пил був усюди, навіть у розетках. Бригада з чотирьох людей за день зняла плівку, зібрала сміття, відмила вікна й підлогу від шпаклівки. Наступного ранку ми вже завозили меблі.</p><div class="who"><img class="avatar" loading="lazy" width="120" height="120" src="https://images.unsplash.com/photo-1611178206724-76cce39da1d7?auto=format&fit=facearea&facepad=2.5&w=120&h=120&q=75" alt="Ірина С." onerror="this.style.visibility='hidden'"><div><b>Ірина С.</b><span>Після ремонту, Лівий берег</span></div></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- 7. FAQ -->
+<section class="section" id="faq">
+  <div class="wrap faq">
+    <div class="faq-head"><span class="pill">Питання</span><h2>Що важливо <span class="blue">знати</span></h2></div>
+    <div class="faq-list">
+      <details><summary>Чи потрібно мені бути вдома під час прибирання?</summary><p>Ні, необов'язково. Можна залишити ключі або пустити нас і піти у справах. Бригада працює за узгодженим планом, а після завершення ви приймаєте результат.</p></details>
+      <details><summary>Що входить у вартість і чи може вона змінитися?</summary><p>У ціну входять робота бригади, професійна техніка та засоби. Суму ми фіксуємо до початку робіт, і вона не змінюється. Якщо щось не влаштує, переробимо безкоштовно протягом 24 годин.</p></details>
+      <details><summary>Чи безпечна хімія для домашніх улюбленців?</summary><p>Ми використовуємо професійні засоби Kärcher і підбираємо їх під поверхню. Скажіть, що вдома є діти чи тварини, і ми врахуємо це при виборі засобів.</p></details>
+      <details><summary>Як відбувається оплата?</summary><p>Ви перевіряєте якість і платите за результат після прийняття роботи. Приймаємо готівку та оплату карткою.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- 8. ORDER FORM -->
+<section class="section" id="order" style="padding-top:0">
+  <div class="wrap order">
+    <div class="form-card" id="orderCard">
+      <div class="fields">
+        <span class="pill kicker">Заявка</span>
+        <h2>Замовте <span class="blue">прибирання</span></h2>
+        <p class="lead">Залиште контакти, і ми зателефонуємо протягом 30 хвилин, щоб уточнити деталі та назвати фіксовану ціну.</p>
+        <form id="orderForm" action="#" method="post" novalidate>
+          <div class="field"><label for="f-name">Ім'я</label><input id="f-name" name="name" autocomplete="name" placeholder="Введіть ваше ім'я"></div>
+          <div class="field" data-req><label for="f-phone">Телефон <i>*</i></label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+380 (__) ___ __ __"><span class="err">Вкажіть номер телефону повністю, наприклад +380 50 123 45 67</span></div>
+          <div class="field"><label for="f-service">Послуга</label>
+            <select id="f-service" name="service">
+              <option value="">Оберіть послугу</option>
+              <option value="general">Генеральне прибирання</option>
+              <option value="repair">Прибирання після ремонту</option>
+              <option value="support">Підтримуюче прибирання</option>
+              <option value="chem">Хімчистка меблів і килимів</option>
+              <option value="windows">Миття вікон і балконів</option>
+              <option value="other">Інше / потрібна консультація</option>
+            </select></div>
+          <div class="field"><label for="f-comment">Коментар (необов'язково)</label><textarea id="f-comment" name="comment" placeholder="Наприклад: площа, район, зручний час"></textarea></div>
+          <button class="btn block" type="submit">Відправити заявку</button>
+          <p class="legal">Натискаючи кнопку, ви погоджуєтеся з <a href="#privacy">політикою конфіденційності</a> та обробкою персональних даних. Ми зателефонуємо протягом 30 хвилин.</p>
+        </form>
+      </div>
+
+    </div>
+    <figure class="ph" style="margin:0"><img width="1200" height="1340" loading="lazy" src="https://res.cloudinary.com/ds3rmkd9q/image/upload/c_crop,g_north_west,x_1376,y_0,w_1376,h_1536/f_auto,q_auto,w_1200/v1791447470/4_vbdxwt.jpg" alt="Клінерка CleanSpot миє панорамне вікно віконним пилососом Kärcher" onerror="this.style.visibility='hidden'">
+      <div class="badge"><b>30 хв</b><span>середній час до нашого дзвінка. Працюємо щодня з 8:00 до 20:00.</span></div></figure>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="fcard">
+      <div class="fword" aria-hidden="true">CleanSpot<i></i></div>
+      <div class="fgrid">
+        <div class="fq">
+          <h3>Залишились питання?</h3>
+          <p>Зв'яжіться з нами:</p>
+          <!-- TODO: замінити контакти й соцмережі на справжні -->
+          <div class="fsoc">
+            <a href="tel:+380674821935" aria-label="Зателефонувати"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.100.4 2.300.6 3.600.6.600 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.500c.6 0 1 .4 1 1 0 1.300.2 2.500.6 3.600.1.300 0 .700-.2 1l-2.300 2.200Z"/></svg></a>
+            <a href="https://t.me/cleanspot_dnipro" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><svg viewBox="0 0 24 24"><path d="M21.9 4.3 18.6 19.5c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L5.9 13.1l-5-1.5c-1.1-.3-1.1-1.1.2-1.6L20.4 2.5c.9-.3 1.7.2 1.5 1.8Z"/></svg></a>
+            <a href="https://instagram.com/cleanspot.dnipro" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7.2A4.8 4.8 0 1 0 12 16.8 4.8 4.8 0 0 0 12 7.2Zm0 7.9a3.1 3.1 0 1 1 0-6.2 3.1 3.1 0 0 1 0 6.2ZM17.3 6.1a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2ZM12 2.2c-2.7 0-3 0-4.1.1-1.1 0-1.8.2-2.4.5-.7.3-1.2.6-1.8 1.2-.6.6-.9 1.1-1.2 1.8-.3.6-.4 1.3-.5 2.4C2 9.3 2 9.6 2 12.3s0 3 .1 4.1c0 1.1.2 1.8.5 2.4.3.7.6 1.2 1.2 1.8.6.6 1.1.9 1.8 1.2.6.3 1.3.4 2.4.5 1.1.1 1.4.1 4.1.1s3 0 4.1-.1c1.1 0 1.8-.2 2.4-.5.7-.3 1.2-.6 1.8-1.2.6-.6.9-1.1 1.2-1.8.3-.6.4-1.3.5-2.4.1-1.1.1-1.4.1-4.1s0-3-.1-4.1c0-1.1-.2-1.8-.5-2.4-.3-.7-.6-1.2-1.2-1.8-.6-.6-1.1-.9-1.8-1.2-.6-.3-1.3-.4-2.4-.5C15 2.2 14.700 2.200 12 2.200Zm0 1.800c2.700 0 3 0 4 .1.9 0 1.400.2 1.800.3.500.200.800.400 1.100.700.400.400.600.700.700 1.100.100.400.300.900.300 1.800.100 1 .100 1.300.100 4s0 3-.100 4c0 .900-.200 1.400-.300 1.800-.200.500-.400.800-.700 1.100-.400.400-.700.600-1.100.700-.400.100-.900.300-1.800.300-1 .100-1.300.100-4 .100s-3 0-4-.1c-.9 0-1.400-.2-1.800-.3-.500-.2-.800-.4-1.100-.7-.4-.4-.6-.7-.7-1.100-.1-.4-.3-.9-.3-1.800-.1-1-.1-1.300-.1-4s0-3 .1-4c0-.9.2-1.400.3-1.800.2-.5.4-.8.7-1.100.4-.4.7-.6 1.100-.7.4-.1.9-.3 1.800-.3 1-.1 1.300-.1 4-.1Z"/></svg></a>
+          </div>
+        </div>
+        <nav class="fcol" aria-label="Розділи"><h4>Навігація</h4><a href="#services">Послуги</a><a href="#about">Про нас</a><a href="#process">Як ми працюємо</a><a href="#results">Відгуки</a><a href="#faq">FAQ</a></nav>
+        <div class="fcol"><h4>Послуги</h4><a href="#services">Генеральне прибирання</a><a href="#services">Після ремонту</a><a href="#services">Підтримуюче прибирання</a><a href="#services">Хімчистка меблів</a><a href="#services">Миття вікон</a></div>
+        <div class="fcol"><h4>Контакти</h4><a href="tel:+380674821935">+380 (67) 482 19 35</a><a href="mailto:hello@cleanspot.com.ua">hello@cleanspot.com.ua</a><span>Щодня 8:00–20:00</span><span>Дніпро та передмістя</span></div>
+      </div>
+    </div>
+    <div class="fbottom"><span>© 2026 CleanSpot. Усі права захищені.</span><a href="#privacy">Політика конфіденційності</a><span>Професійне прибирання у Дніпрі</span></div>
+  </div>
+</footer>
+
+<!-- mobile sticky bar -->
+<div class="mbar">
+  <button class="btn" data-service="">Замовити прибирання</button>
+  <a class="ico" href="tel:+380674821935" aria-label="Зателефонувати"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.100.4 2.300.6 3.600.6.600 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.500c.6 0 1 .4 1 1 0 1.300.2 2.500.6 3.600.1.300 0 .700-.2 1l-2.300 2.200Z"/></svg></a>
+  <a class="ico" href="https://t.me/cleanspot_dnipro" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><svg viewBox="0 0 24 24"><path d="M21.9 4.3 18.6 19.5c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L5.9 13.1l-5-1.5c-1.1-.3-1.1-1.1.2-1.6L20.4 2.5c.9-.3 1.7.2 1.5 1.8Z"/></svg></a>
+</div>
+
+<!-- calculator dialog -->
+<dialog class="dlg" id="calc" aria-labelledby="calc-title">
+  <div class="dlg-in" id="calcCard">
+    <button class="x" type="button" data-close aria-label="Закрити">×</button>
+    <div class="fields">
+      <h2 id="calc-title">Розрахувати <span class="blue">вартість</span></h2>
+      <p class="lead">Оберіть послугу та вкажіть обсяг. Ціна порахується одразу.</p>
+      <form id="calcForm" action="#" method="post" novalidate>
+        <div class="field"><label for="c-service">Послуга</label>
+          <select id="c-service" autofocus>
+            <option value="general">Генеральне прибирання</option>
+            <option value="repair">Прибирання після ремонту</option>
+            <option value="support">Підтримуюче прибирання</option>
+            <option value="windows">Миття вікон і балконів</option>
+            <option value="chem">Хімчистка меблів і килимів</option>
+          </select></div>
+        <div class="field" id="c-item-wrap" hidden><label for="c-item">Що чистимо</label>
+          <select id="c-item">
+            <option value="sofa">Диван</option><option value="armchair">Крісло</option><option value="mattress">Матрац</option><option value="carpet">Килим</option>
+          </select></div>
+        <div class="field"><label for="c-qty" id="c-qty-label">Площа приміщення, м²</label><input id="c-qty" type="number" min="1" step="1" value="60" inputmode="numeric"></div>
+        <div class="sum" aria-live="polite"><span>Орієнтовна вартість</span><b id="c-sum">2 700 грн</b><small>Остаточну ціну назве менеджер до початку робіт.</small></div>
+        <div class="row2">
+          <div class="field"><label for="c-name">Ім'я</label><input id="c-name" autocomplete="name" placeholder="Ваше ім'я"></div>
+          <div class="field" data-req><label for="c-phone">Телефон <i>*</i></label><input id="c-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+380 (__) ___ __ __"><span class="err">Вкажіть номер повністю</span></div>
+        </div>
+        <button class="btn block" type="submit">Замовити прибирання</button>
+      </form>
+    </div>
+
+  </div>
+</dialog>
+
+<!-- privacy policy dialog (opens from any link to #privacy) -->
+<!-- TODO: перед запуском підставити реальні реквізити власника сайту й перевірити текст із юристом -->
+<dialog class="dlg pol" id="privacy" aria-labelledby="pol-title">
+  <div class="pol-head">
+    <div><span class="pill">Документ</span><h2 id="pol-title">Політика <span class="blue">конфіденційності</span></h2></div>
+    <button class="x" type="button" data-close aria-label="Закрити">×</button>
+  </div>
+  <div class="pol-body">
+    <p class="pol-intro">Ця політика пояснює, які дані ми отримуємо, коли ви залишаєте заявку на сайті CleanSpot, навіщо вони нам і як ми їх захищаємо. Редакція від 8 жовтня 2026 року.</p>
+    <section class="pol-sec" id="pol-s1">
+      <h3><span>01</span>Загальні положення</h3>
+      <p>Власник сайту та володілець персональних даних — клінінгова компанія CleanSpot, м. Дніпро (далі — «ми»). Ми обробляємо персональні дані відповідно до Закону України «Про захист персональних даних».</p>
+      <p>Користуючись сайтом і надсилаючи заявку, ви підтверджуєте, що ознайомилися з цією політикою та погоджуєтеся з нею.</p>
+    </section>
+
+    <section class="pol-sec" id="pol-s2">
+      <h3><span>02</span>Які дані ми збираємо</h3>
+      <p>Лише ті, які ви самі вказуєте у формі заявки або в калькуляторі вартості:</p>
+      <ul>
+        <li>ім'я (за бажанням);</li>
+        <li>номер телефону;</li>
+        <li>обрану послугу, площу приміщення або кількість предметів;</li>
+        <li>коментар до заявки, наприклад адресу, район чи зручний час.</li>
+      </ul>
+      <p>Ми не просимо паспортні дані, номери банківських карток чи інші чутливі відомості.</p>
+    </section>
+
+    <section class="pol-sec" id="pol-s3">
+      <h3><span>03</span>Навіщо ми їх використовуємо</h3>
+      <ul>
+        <li>щоб зателефонувати вам, уточнити обсяг робіт і назвати фіксовану ціну;</li>
+        <li>щоб узгодити дату й час виїзду бригади;</li>
+        <li>щоб повідомити про зміни у вашому замовленні;</li>
+        <li>щоб покращувати сервіс на основі ваших відгуків.</li>
+      </ul>
+      <p>Ми не надсилаємо рекламних розсилок без вашої окремої згоди.</p>
+    </section>
+
+    <section class="pol-sec" id="pol-s4">
+      <h3><span>04</span>Підстава для обробки</h3>
+      <p>Ми обробляємо дані на підставі вашої згоди, яку ви надаєте, натискаючи кнопку «Відправити заявку» або «Замовити прибирання», а також для укладення та виконання договору про надання послуг прибирання.</p>
+    </section>
+
+    <section class="pol-sec" id="pol-s5">
+      <h3><span>05</span>Кому передаємо дані</h3>
+      <p>Ми не продаємо й не передаємо ваші дані третім особам для реклами. Доступ до них мають лише:</p>
+      <ul>
+        <li>менеджер, який опрацьовує заявку, і бригадир, що виїжджає на об'єкт;</li>
+        <li>сервіси, через які ми отримуємо заявки та зв'язуємося з вами (пошта, месенджер, хостинг сайту), — лише в обсязі, потрібному для їхньої роботи;</li>
+        <li>державні органи, якщо цього вимагає закон.</li>
+      </ul>
+    </section>
+
+    <section class="pol-sec" id="pol-s6">
+      <h3><span>06</span>Скільки зберігаємо</h3>
+      <p>Дані заявки зберігаються протягом 1 року з моменту останнього звернення, щоб ми могли швидко повторити замовлення або розглянути гарантійну переробку. Після цього дані видаляються. Ви можете попросити видалити їх раніше.</p>
+    </section>
+
+    <section class="pol-sec" id="pol-s7">
+      <h3><span>07</span>Файли cookie</h3>
+      <p>Сайт використовує лише технічно необхідні файли cookie, без яких він не працюватиме коректно. Якщо ми підключимо аналітику чи рекламні сервіси, то попередньо попросимо вашу згоду й оновимо цю політику.</p>
+    </section>
+
+    <section class="pol-sec" id="pol-s8">
+      <h3><span>08</span>Ваші права</h3>
+      <p>Відповідно до статті 8 Закону України «Про захист персональних даних» ви маєте право:</p>
+      <ul>
+        <li>знати, які ваші дані ми зберігаємо і навіщо;</li>
+        <li>вимагати виправити неточні дані або видалити їх;</li>
+        <li>відкликати згоду на обробку в будь-який момент;</li>
+        <li>заперечити проти обробки й звернутися зі скаргою до Уповноваженого Верховної Ради України з прав людини або до суду.</li>
+      </ul>
+      <p>Щоб скористатися будь-яким із цих прав, напишіть нам — відповімо протягом 10 робочих днів.</p>
+    </section>
+
+    <section class="pol-sec" id="pol-s9">
+      <h3><span>09</span>Захист даних</h3>
+      <p>Ми обмежуємо доступ до заявок колом працівників, яким це потрібно для роботи, використовуємо захищене з'єднання (HTTPS) і не зберігаємо дані у відкритому доступі.</p>
+    </section>
+
+    <section class="pol-sec" id="pol-s10">
+      <h3><span>10</span>Зміни та контакти</h3>
+      <p>Ми можемо оновлювати цю політику. Актуальна редакція завжди доступна на цій сторінці, а дата оновлення вказана на початку.</p>
+      <p>З питань обробки персональних даних звертайтеся:</p>
+      <!-- TODO: замінити на справжні контакти -->
+      <div class="contact">
+        <div><small>Пошта</small><a href="mailto:hello@cleanspot.com.ua">hello@cleanspot.com.ua</a></div>
+        <div><small>Телефон</small><a href="tel:+380674821935">+380 (67) 482 19 35</a></div>
+        <div><small>Графік</small>Щодня 8:00–20:00</div>
+      </div>
+    </section>
+  </div>
+</dialog>
+
+<!-- success popup (order form + calculator) -->
+<dialog class="dlg thx" id="thanks" aria-labelledby="thx-title">
+  <div class="dlg-in" role="status" tabindex="-1" autofocus>
+    <button class="x" type="button" data-close aria-label="Закрити">×</button>
+    <span class="thx-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+    <h2 id="thx-title">Дякуємо, заявку <span class="blue">прийнято!</span></h2>
+    <p class="lead" id="thx-text">Ми зателефонуємо вам протягом 30 хвилин, щоб уточнити деталі та назвати фіксовану ціну.</p>
+    <div class="thx-sum" id="thx-sum"></div>
+    <p class="thx-note">Працюємо щодня з 8:00 до 20:00. Заявки після 20:00 опрацюємо зранку.</p>
+    <button class="btn" type="button" data-close>Добре</button>
+  </div>
+</dialog>
+<script>
+(function(){
+  var $=function(s,c){return (c||document).querySelector(s)}, $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+  var fmt=new Intl.NumberFormat('uk-UA');
+
+  /* phone mask */
+  function mask(inp){
+    inp.addEventListener('input',function(){
+      var d=inp.value.replace(/\D/g,'');
+      if(d.indexOf('380')===0)d=d.slice(3); else if(d.charAt(0)==='0')d=d.slice(1);
+      d=d.slice(0,9);
+      var o='+380';
+      if(d.length)o+=' ('+d.slice(0,2)+(d.length>=2?')':'');
+      if(d.length>2)o+=' '+d.slice(2,5);
+      if(d.length>5)o+=' '+d.slice(5,7);
+      if(d.length>7)o+=' '+d.slice(7,9);
+      inp.value=d.length?o:'';
+    });
+  }
+  $$('input[type=tel]').forEach(mask);
+  function phoneOk(v){return v.replace(/\D/g,'').length===12}
+
+  /* order form */
+  var form=$('#orderForm');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var f=$('#f-phone').closest('.field'), ok=phoneOk($('#f-phone').value);
+    f.classList.toggle('bad',!ok);
+    if(!ok){$('#f-phone').focus();return}
+    var data={name:$('#f-name').value,phone:$('#f-phone').value,service:$('#f-service').value,comment:$('#f-comment').value};
+    /* TODO: відправка заявки (Telegram-бот, пошта або CRM) */
+    console.log('order',data);
+    var opt=$('#f-service').selectedOptions[0];
+    showThanks(data.name,data.phone,[['Послуга',data.service?opt.textContent:'Уточнимо по телефону']]);
+    form.reset();
+  });
+  $('#f-phone').addEventListener('input',function(){this.closest('.field').classList.remove('bad')});
+
+  /* success popup */
+  var thx=$('#thanks');
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function showThanks(name,phone,rows){
+    var n=String(name||'').trim();
+    $('#thx-text').innerHTML=esc(n?n+', м':'М')+'и зателефонуємо на <b>'+esc(phone)+'</b> протягом 30 хвилин, щоб уточнити деталі та назвати фіксовану ціну.';
+    $('#thx-sum').innerHTML=rows.map(function(r){return '<div><span>'+esc(r[0])+'</span><b>'+esc(r[1])+'</b></div>'}).join('');
+    thx.showModal();
+  }
+  $$('[data-close]',thx).forEach(function(b){b.addEventListener('click',function(){thx.close()})});
+  thx.addEventListener('click',function(e){if(e.target===thx)thx.close()});
+
+  /* burger menu */
+  var hdr=$('.header'), burger=$('.burger');
+  function menu(open){
+    hdr.classList.toggle('open',open);
+    burger.setAttribute('aria-expanded',open);
+    burger.setAttribute('aria-label',open?'Закрити меню':'Відкрити меню');
+  }
+  burger.addEventListener('click',function(){menu(!hdr.classList.contains('open'))});
+  $$('#mnav a,#mnav button').forEach(function(a){a.addEventListener('click',function(){menu(false)})});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')menu(false)});
+  document.addEventListener('click',function(e){if(!hdr.contains(e.target))menu(false)});
+
+  /* after the hero: CTA appears in header; mobile bar shows until the order form (and stays hidden below it) */
+  var mbar=$('.mbar'), heroOut=false, orderReached=false;
+  function sync(){
+    hdr.classList.toggle('scrolled',heroOut);
+    mbar.classList.toggle('show',heroOut&&!orderReached);
+  }
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){
+      heroOut=!es[0].isIntersecting&&es[0].boundingClientRect.top<0;sync();
+    }).observe($('.hero'));
+    new IntersectionObserver(function(es){
+      orderReached=es[0].isIntersecting||es[0].boundingClientRect.top<0;sync();
+    }).observe($('#order'));
+  } else {heroOut=true;sync()}
+
+  /* whole service card is clickable */
+  $$('.svc-card').forEach(function(c){
+    c.addEventListener('click',function(e){if(!e.target.closest('.go'))$('.go',c).click()});
+  });
+
+  /* pick service buttons */
+  $$('[data-service]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var v=b.getAttribute('data-service');
+      if(v)$('#f-service').value=v;
+      $('#order').scrollIntoView({behavior:'smooth'});
+      setTimeout(function(){$('#f-name').focus({preventScroll:true})},600);
+    });
+  });
+
+  /* calculator */
+  var dlg=$('#calc');
+  var S={
+    general:{rate:45,unit:'м²',label:'Площа приміщення, м²',def:60},
+    repair:{rate:60,unit:'м²',label:'Площа приміщення, м²',def:60},
+    support:{rate:30,unit:'м²',label:'Площа приміщення, м²',def:60},
+    windows:{rate:80,unit:'м²',label:'Площа вікон, м²',def:12},
+    chem:{}
+  };
+  var C={sofa:{rate:1200,unit:'шт',label:'Кількість диванів'},armchair:{rate:500,unit:'шт',label:'Кількість крісел'},mattress:{rate:900,unit:'шт',label:'Кількість матраців'},carpet:{rate:150,unit:'м²',label:'Площа килима, м²'}};
+  function cur(){var s=$('#c-service').value;return s==='chem'?C[$('#c-item').value]:S[s]}
+  function recalc(){
+    var q=Math.max(1,parseFloat($('#c-qty').value)||0), c=cur();
+    $('#c-sum').textContent=fmt.format(Math.round(c.rate*q))+' грн';
+  }
+  function syncService(resetQty){
+    var chem=$('#c-service').value==='chem';
+    $('#c-item-wrap').hidden=!chem;
+    var c=cur();
+    $('#c-qty-label').textContent=c.label;
+    if(resetQty)$('#c-qty').value=chem?1:c.def;
+    recalc();
+  }
+  $('#c-service').addEventListener('change',function(){syncService(true)});
+  $('#c-item').addEventListener('change',function(){syncService(true)});
+  $('#c-qty').addEventListener('input',recalc);
+  $$('[data-open-calc]').forEach(function(b){b.addEventListener('click',function(){
+    syncService(true);dlg.showModal();})});
+  $$('[data-close]',dlg).forEach(function(b){b.addEventListener('click',function(){dlg.close()})});
+  dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close()});
+  $('#calcForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    var f=$('#c-phone').closest('.field'), ok=phoneOk($('#c-phone').value);
+    f.classList.toggle('bad',!ok);
+    if(!ok){$('#c-phone').focus();return}
+    var data={service:$('#c-service').value,item:$('#c-item').value,qty:$('#c-qty').value,estimate:$('#c-sum').textContent,name:$('#c-name').value,phone:$('#c-phone').value};
+    /* TODO: відправка заявки з розрахунком (Telegram-бот, пошта або CRM) */
+    console.log('calc order',data);
+    var sv=$('#c-service').selectedOptions[0].textContent, it=$('#c-service').value==='chem'?' ('+$('#c-item').selectedOptions[0].textContent.toLowerCase()+')':'';
+    dlg.close();
+    showThanks(data.name,data.phone,[['Послуга',sv+it],['Обсяг',data.qty+' '+cur().unit],['Орієнтовна вартість',data.estimate]]);
+    $('#calcForm').reset();
+  });
+  $('#c-phone').addEventListener('input',function(){this.closest('.field').classList.remove('bad')});
+
+  /* privacy policy dialog */
+  var pol=$('#privacy');
+  function openPolicy(){if(!pol.open)pol.showModal();$('.pol-body',pol).scrollTop=0}
+  $$('a[href="#privacy"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();openPolicy()})});
+  $$('[data-close]',pol).forEach(function(b){b.addEventListener('click',function(){pol.close()})});
+  pol.addEventListener('click',function(e){if(e.target===pol)pol.close()});
+  if(location.hash==='#privacy')openPolicy();
+  /* before/after */
+  $$('.ba').forEach(function(ba){
+    var rng=$('input',ba);
+    rng.addEventListener('input',function(){ba.style.setProperty('--pos',rng.value+'%')});
+  });
+  var bs=$('#baSlider'), track=$('.ba-track',bs), slides=$$('.ba-slide',bs), baCur=0;
+  var dots=$('#baDots'), pad=function(n){return (n<10?'0':'')+n};
+  $('#baTotal').textContent=pad(slides.length);
+  slides.forEach(function(s,i){
+    var d=document.createElement('button');d.type='button';d.setAttribute('aria-label','Результат '+(i+1));
+    d.addEventListener('click',function(){go(i)});dots.appendChild(d);
+  });
+  function go(i){
+    baCur=(i+slides.length)%slides.length;
+    track.style.transform='translateX('+(-100*baCur)+'%)';
+    slides.forEach(function(s,j){s.setAttribute('aria-hidden',j!==baCur);$('input',s).tabIndex=j===baCur?0:-1});
+    $$('button',dots).forEach(function(d,j){d.setAttribute('aria-current',j===baCur)});
+    $('#baNum').textContent=pad(baCur+1);
+    $('#baTitle').textContent=slides[baCur].getAttribute('data-title');
+  }
+  $$('.ba-btn',bs).forEach(function(b){b.addEventListener('click',function(){go(baCur+(+b.getAttribute('data-dir')))})});
+  go(0);
+})();
+</script>
+</body>
+</html>
