@@ -432,6 +432,12 @@ dialog.pol[open]{display:flex;flex-direction:column;max-height:min(88dvh,920px)}
   /* calculator: centred card with 16px margins, fits one screen (vh fallback for older iOS) */
   dialog.dlg#calc{width:calc(100% - 32px);max-width:460px;margin:auto;border-radius:24px;max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none}
   dialog.dlg#calc::-webkit-scrollbar{display:none}
+  /* full screen height (minus 16px margins), centred; button pinned to the bottom edge */
+  dialog.dlg#calc[open]{display:flex;flex-direction:column;inset:0;height:calc(100vh - 32px);height:calc(100dvh - 32px);max-height:none}
+  #calc .dlg-in{flex:1 0 auto;display:flex;flex-direction:column}
+  #calc .fields,#calc form{flex:1 0 auto;display:flex;flex-direction:column}
+  #calc form{justify-content:space-between}#calc form>*{margin-bottom:0}#calc form{gap:12px}
+  #calc .sum{margin-bottom:16px}
   #calc .dlg-in{padding:22px 18px 20px}
   #calc h2{font-size:1.5rem;padding-right:44px}
   #calc .lead{margin-bottom:16px}
