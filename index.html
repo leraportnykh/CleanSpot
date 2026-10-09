@@ -351,8 +351,9 @@ dialog.dlg::backdrop{background:rgba(21,26,36,.55);backdrop-filter:blur(4px)}
 .dlg-in{padding:clamp(22px,4vw,36px);position:relative}
 .dlg h2{font-size:1.75rem;margin-bottom:6px;padding-right:48px}
 .dlg .lead{font-size:14px;margin-bottom:22px}
-.x{position:absolute;right:14px;top:14px;width:40px;height:40px;border-radius:50%;border:0;background:var(--paper);cursor:pointer;font-size:20px;line-height:1}
-.x:hover{background:var(--fog)}
+.x{position:absolute;right:14px;top:14px;z-index:2;display:grid;place-items:center;width:40px;height:40px;padding:0;border-radius:50%;border:1.5px solid var(--blue);background:var(--white);color:var(--ink);cursor:pointer;font-size:20px;line-height:1;transition:background .2s,color .2s}
+.x:hover{background:var(--blue);color:#fff}
+.x:focus-visible{outline-offset:2px}
 .sum{background:var(--blue-soft);border-radius:var(--r);padding:18px 22px;margin:4px 0 20px}
 .sum span{font-size:14px;color:var(--ink-soft)}
 .sum b{display:block;font:600 2.25rem/1.1 var(--display);letter-spacing:-.04em;color:var(--blue)}
@@ -365,7 +366,7 @@ dialog.pol{width:min(900px,calc(100% - 24px));background:var(--paper)}
 dialog.dlg:focus,dialog.dlg:focus-visible{outline:none}
 dialog.pol[open]{display:flex;flex-direction:column;max-height:min(88dvh,920px)}
 .pol-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:clamp(20px,3vw,32px) clamp(20px,3vw,32px) 18px;border-bottom:1px solid var(--fog)}
-.pol-head .x{position:static;flex:0 0 auto;background:var(--white)}
+.pol-head .x{position:static;flex:0 0 auto}
 .pol .pol-head h2{margin:14px 0 0;padding:0;font-size:clamp(1.75rem,3.4vw,2.5rem)}
 .pol-body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;display:grid;gap:12px;align-content:start;padding:20px clamp(16px,3vw,32px) clamp(20px,3vw,32px)}
 .pol-intro{margin-bottom:4px;font-size:15px;color:var(--ink-soft)}
@@ -442,8 +443,10 @@ dialog.pol[open]{display:flex;flex-direction:column;max-height:min(88dvh,920px)}
   .mbar.show{transform:none;visibility:visible;transition:transform .3s}
   .mbar .btn{height:52px;padding:0 12px}.mbar .ico{width:52px;height:52px}
   /* calculator: centred card, 16px margins, one screen tall; fields keep the site's fixed spacing, content scrolls inside if longer */
-  dialog.dlg#calc{width:calc(100% - 32px);max-width:460px;margin:auto;border-radius:24px;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none}
-  dialog.dlg#calc::-webkit-scrollbar{display:none}
+  dialog.dlg#calc{width:calc(100% - 32px);max-width:460px;margin:auto;border-radius:24px;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:var(--blue) transparent}
+  dialog.dlg#calc::-webkit-scrollbar{width:4px}
+  dialog.dlg#calc::-webkit-scrollbar-track{background:transparent;margin:20px 0}
+  dialog.dlg#calc::-webkit-scrollbar-thumb{background:var(--blue);border-radius:999px}
   dialog.dlg#calc[open]{display:flex;flex-direction:column;height:calc(100vh - 32px);height:calc(100dvh - 32px);max-height:none}
   #calc .dlg-in{flex:1 0 auto;display:flex;flex-direction:column;padding:24px 20px 20px}
   #calc .fields,#calc form{flex:1 0 auto;display:flex;flex-direction:column}
